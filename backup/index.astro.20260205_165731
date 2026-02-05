@@ -862,7 +862,7 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
     <nav>
       <div class="container">
         <div class="logo">OdzyskajFakture</div>
-        <a href="#cta" class="nav-cta">Umów demo</a>
+        <a href="#cta" class="nav-cta">Dołącz do listy</a>
       </div>
     </nav>
 
@@ -872,7 +872,7 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
         <div class="hero-content">
           <div class="badge fade-up">
             <span class="badge-dot"></span>
-            Nowość w Polsce
+            Wkrótce startujemy
           </div>
           <h1 class="fade-up delay-1">
             Klienci nie płacą?<br>
@@ -888,18 +888,18 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
             <p hidden><label>Nie wypełniaj: <input name="bot-field" /></label></p>
             <div class="form-wrapper">
               <input type="email" name="email" placeholder="Wpisz swój email" required />
-              <button type="submit" class="btn-primary">Umów bezpłatne demo</button>
+              <button type="submit" class="btn-primary">Dołącz do listy</button>
             </div>
             <p class="form-note">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              Odezwiemy się w ciągu 24h
+              Zero spamu. Powiadomimy tylko o starcie.
             </p>
           </form>
 
           <div class="social-proof fade-up delay-4">
-            <p class="social-proof-label">Dla firm z branż</p>
+            <p class="social-proof-label">Zaufali nam przedsiębiorcy z</p>
             <div class="logos">
               <span class="logo-placeholder">Hurtownie</span>
               <span class="logo-placeholder">Agencje</span>
@@ -1118,14 +1118,14 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
     <section class="final-cta" id="cta">
       <div class="container">
         <h2>Gotowy odzyskać swoje pieniądze?</h2>
-        <p>Umów bezpłatne demo i zobacz jak AI może odzyskiwać Twoje faktury.</p>
+        <p>Dołącz do listy oczekujących. Pierwsi użytkownicy dostaną specjalną ofertę na start.</p>
 
-        <form class="cta-form" name="demo" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/dziekujemy">
-          <input type="hidden" name="form-name" value="demo" />
+        <form class="cta-form" name="waitlist-bottom" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/dziekujemy">
+          <input type="hidden" name="form-name" value="waitlist-bottom" />
           <p hidden><label>Nie wypełniaj: <input name="bot-field" /></label></p>
           <div class="form-wrapper">
-            <input type="email" name="email" placeholder="Twój email firmowy" required />
-            <button type="submit" class="btn-primary">Umów demo</button>
+            <input type="email" name="email" placeholder="Wpisz swój email" required />
+            <button type="submit" class="btn-primary">Powiadom mnie</button>
           </div>
         </form>
       </div>
