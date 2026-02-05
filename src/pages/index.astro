@@ -15,23 +15,497 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <div class="container">
+        <div class="logo">
+          <span class="logo-icon">⚡</span>
+          OdzyskajFakturę
+        </div>
+        <div class="nav-links">
+          <a href="#jak-dziala">Jak działa</a>
+          <a href="#kalkulator">Kalkulator</a>
+          <a href="#cennik">Cennik</a>
+        </div>
+        <a href="#cta" class="nav-cta">Umów demo</a>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+        <div class="grid-pattern"></div>
+      </div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="badge">
+            <span class="badge-icon">🇵🇱</span>
+            Pierwsze takie rozwiązanie w Polsce
+          </div>
+          <h1>
+            Przestań gonić<br>
+            za swoimi <span class="gradient-text">pieniędzmi</span>
+          </h1>
+          <p class="subtitle">
+            AI automatycznie przypomina Twoim klientom o niezapłaconych fakturach.
+            SMS, email, a nawet <strong>telefon</strong> — wszystko bez Twojego udziału.
+          </p>
+
+          <div class="hero-cta">
+            <a href="#cta" class="btn-primary">
+              Umów bezpłatne demo
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+            <a href="#jak-dziala" class="btn-secondary">Zobacz jak działa</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <span class="stat-value">24h</span>
+              <span class="stat-desc">Wdrożenie</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="hero-stat">
+              <span class="stat-value">3x</span>
+              <span class="stat-desc">Szybsza płatność</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="hero-stat">
+              <span class="stat-value">0</span>
+              <span class="stat-desc">Niezręcznych rozmów</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="phone-mockup">
+            <div class="phone-notch"></div>
+            <div class="phone-content">
+              <div class="notification">
+                <div class="notif-icon">📞</div>
+                <div class="notif-text">
+                  <strong>AI Windykator</strong>
+                  <span>Dzwonię do klienta: Firma XYZ</span>
+                </div>
+                <span class="notif-time">teraz</span>
+              </div>
+              <div class="notification success">
+                <div class="notif-icon">✅</div>
+                <div class="notif-text">
+                  <strong>Faktura FV/2024/0847</strong>
+                  <span>Klient obiecał przelew dziś</span>
+                </div>
+                <span class="notif-time">2 min</span>
+              </div>
+              <div class="notification">
+                <div class="notif-icon">💰</div>
+                <div class="notif-text">
+                  <strong>Wpłata otrzymana</strong>
+                  <span>+12 500,00 PLN</span>
+                </div>
+                <span class="notif-time">1 godz</span>
+              </div>
+              <div class="stats-mini">
+                <div class="stats-mini-item">
+                  <span class="smi-value">47 280 zł</span>
+                  <span class="smi-label">Odzyskane w tym miesiącu</span>
+                </div>
+                <div class="stats-mini-chart">
+                  <div class="mini-bar" style="height: 40%"></div>
+                  <div class="mini-bar" style="height: 60%"></div>
+                  <div class="mini-bar" style="height: 45%"></div>
+                  <div class="mini-bar" style="height: 80%"></div>
+                  <div class="mini-bar" style="height: 65%"></div>
+                  <div class="mini-bar active" style="height: 95%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="floating-card card-1">
+            <span class="fc-icon">📧</span>
+            <span>Email wysłany</span>
+          </div>
+          <div class="floating-card card-2">
+            <span class="fc-icon">💬</span>
+            <span>SMS dostarczony</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem -->
+    <section class="problem">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Problem</span>
+          <h2>Ile kosztuje Cię<br><span class="gradient-text">brak płatności na czas?</span></h2>
+        </div>
+
+        <div class="problem-grid">
+          <div class="problem-card">
+            <div class="pc-icon">⏰</div>
+            <h3>Stracony czas</h3>
+            <p>Zamiast rozwijać biznes, dzwonisz i piszesz maile "w sprawie faktury". Średnio 5-10 godzin miesięcznie.</p>
+          </div>
+          <div class="problem-card">
+            <div class="pc-icon">💸</div>
+            <h3>Zamrożona gotówka</h3>
+            <p>Płacisz ZUS, pracownikom, dostawcom — a Twoje pieniądze leżą na koncie klienta. Cashflow cierpi.</p>
+          </div>
+          <div class="problem-card">
+            <div class="pc-icon">😰</div>
+            <h3>Stres i napięcie</h3>
+            <p>Dzwonienie po pieniądze to niezręczne. Szczególnie gdy to Twój dobry, długoletni klient.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROI Calculator -->
+    <section class="calculator" id="kalkulator">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Kalkulator ROI</span>
+          <h2>Ile możesz <span class="gradient-text">odzyskać?</span></h2>
+          <p class="section-desc">Sprawdź ile pieniędzy możesz odzyskać dzięki automatycznym przypomnieniom</p>
+        </div>
+
+        <div class="calc-wrapper">
+          <div class="calc-inputs">
+            <div class="calc-input-group">
+              <label>Ile faktur wystawiasz miesięcznie?</label>
+              <div class="input-with-slider">
+                <input type="range" id="invoices" min="10" max="500" value="50" />
+                <div class="input-value"><span id="invoices-value">50</span> faktur</div>
+              </div>
+            </div>
+
+            <div class="calc-input-group">
+              <label>Średnia wartość faktury</label>
+              <div class="input-with-slider">
+                <input type="range" id="avg-value" min="500" max="50000" step="500" value="5000" />
+                <div class="input-value"><span id="avg-value-display">5 000</span> PLN</div>
+              </div>
+            </div>
+
+            <div class="calc-input-group">
+              <label>Ile % faktur jest płaconych po terminie?</label>
+              <div class="input-with-slider">
+                <input type="range" id="late-percent" min="5" max="50" value="20" />
+                <div class="input-value"><span id="late-percent-value">20</span>%</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="calc-results">
+            <div class="calc-result-card main">
+              <span class="crc-label">Miesięcznie tracisz przez opóźnienia</span>
+              <span class="crc-value" id="monthly-loss">50 000 PLN</span>
+              <span class="crc-sub">zamrożonej gotówki</span>
+            </div>
+
+            <div class="calc-result-row">
+              <div class="calc-result-card">
+                <span class="crc-label">Możesz odzyskać szybciej</span>
+                <span class="crc-value green" id="recover-value">32 500 PLN</span>
+                <span class="crc-sub">65% skuteczności przypomnień</span>
+              </div>
+
+              <div class="calc-result-card">
+                <span class="crc-label">Zwrot z inwestycji (ROI)</span>
+                <span class="crc-value green" id="roi-value">5 400%</span>
+                <span class="crc-sub">przy planie Pro</span>
+              </div>
+            </div>
+
+            <a href="#cta" class="btn-primary btn-full">
+              Zacznij odzyskiwać pieniądze
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how" id="jak-dziala">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Jak to działa</span>
+          <h2>Automatyczna sekwencja<br><span class="gradient-text">w 3 krokach</span></h2>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-line"></div>
+
+          <div class="timeline-item">
+            <div class="ti-marker">
+              <span>+3</span>
+              <small>dni</small>
+            </div>
+            <div class="ti-content">
+              <div class="ti-icon">💬</div>
+              <h3>SMS przypomnienie</h3>
+              <p>Delikatny SMS z przypomnieniem o zbliżającym się lub minionym terminie płatności. Profesjonalny ton, bez nachalności.</p>
+              <div class="ti-example">
+                <span class="ti-example-label">Przykład:</span>
+                "Przypominamy o fakturze FV/2024/123 na kwotę 2 500 PLN. Termin płatności minął 3 dni temu. Dziękujemy za szybką wpłatę."
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="ti-marker">
+              <span>+7</span>
+              <small>dni</small>
+            </div>
+            <div class="ti-content">
+              <div class="ti-icon">📧</div>
+              <h3>Email z fakturą</h3>
+              <p>Profesjonalny email z załączoną fakturą PDF i wygodnym linkiem do szybkiej płatności online.</p>
+              <div class="ti-features">
+                <span>✓ Faktura w załączniku</span>
+                <span>✓ Link do płatności</span>
+                <span>✓ Historia wpłat</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item highlight">
+            <div class="ti-marker">
+              <span>+14</span>
+              <small>dni</small>
+            </div>
+            <div class="ti-content">
+              <div class="ti-icon">📞</div>
+              <div class="ti-badge">Unikalne w Polsce</div>
+              <h3>Telefon od AI</h3>
+              <p>Naturalny głos AI dzwoni do klienta. Grzecznie ale stanowczo przypomina o płatności. Może umówić termin spłaty lub przekierować do Ciebie.</p>
+              <div class="ti-features">
+                <span>✓ Naturalny polski głos</span>
+                <span>✓ Rozmowa kontekstowa</span>
+                <span>✓ Przekierowanie do Ciebie</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="cennik">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Cennik</span>
+          <h2>Prosty i przejrzysty <span class="gradient-text">cennik</span></h2>
+          <p class="section-desc">Wybierz plan dopasowany do Twojego biznesu. Bez ukrytych kosztów.</p>
+        </div>
+
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <div class="pc-header">
+              <h3>Starter</h3>
+              <p>Dla małych firm i freelancerów</p>
+            </div>
+            <div class="pc-price">
+              <span class="price-value">297</span>
+              <span class="price-currency">PLN</span>
+              <span class="price-period">/miesiąc</span>
+            </div>
+            <ul class="pc-features">
+              <li><span class="check">✓</span> Do 50 faktur miesięcznie</li>
+              <li><span class="check">✓</span> Przypomnienia SMS</li>
+              <li><span class="check">✓</span> Przypomnienia Email</li>
+              <li><span class="check">✓</span> Integracja z Fakturownia</li>
+              <li><span class="check">✓</span> Dashboard i raporty</li>
+              <li class="disabled"><span class="x">✗</span> Telefon od AI</li>
+              <li class="disabled"><span class="x">✗</span> Dedykowany opiekun</li>
+            </ul>
+            <a href="#cta" class="btn-outline">Wybierz Starter</a>
+          </div>
+
+          <div class="pricing-card popular">
+            <div class="popular-badge">Najpopularniejszy</div>
+            <div class="pc-header">
+              <h3>Pro</h3>
+              <p>Dla rosnących firm B2B</p>
+            </div>
+            <div class="pc-price">
+              <span class="price-value">597</span>
+              <span class="price-currency">PLN</span>
+              <span class="price-period">/miesiąc</span>
+            </div>
+            <ul class="pc-features">
+              <li><span class="check">✓</span> Do 200 faktur miesięcznie</li>
+              <li><span class="check">✓</span> Przypomnienia SMS</li>
+              <li><span class="check">✓</span> Przypomnienia Email</li>
+              <li><span class="check">✓</span> <strong>Telefon od AI</strong></li>
+              <li><span class="check">✓</span> Wszystkie integracje</li>
+              <li><span class="check">✓</span> Dashboard i raporty</li>
+              <li><span class="check">✓</span> Priorytetowe wsparcie</li>
+            </ul>
+            <a href="#cta" class="btn-primary">Wybierz Pro</a>
+          </div>
+
+          <div class="pricing-card">
+            <div class="pc-header">
+              <h3>Enterprise</h3>
+              <p>Dla dużych organizacji</p>
+            </div>
+            <div class="pc-price">
+              <span class="price-value">Wycena</span>
+              <span class="price-period">indywidualna</span>
+            </div>
+            <ul class="pc-features">
+              <li><span class="check">✓</span> Nieograniczona liczba faktur</li>
+              <li><span class="check">✓</span> Wszystkie kanały kontaktu</li>
+              <li><span class="check">✓</span> Custom integracje</li>
+              <li><span class="check">✓</span> Dedykowany opiekun</li>
+              <li><span class="check">✓</span> SLA 99.9%</li>
+              <li><span class="check">✓</span> Szkolenie zespołu</li>
+              <li><span class="check">✓</span> Własny branding</li>
+            </ul>
+            <a href="#cta" class="btn-outline">Skontaktuj się</a>
+          </div>
+        </div>
+
+        <div class="pricing-guarantee">
+          <div class="guarantee-icon">🛡️</div>
+          <div class="guarantee-text">
+            <strong>14 dni gwarancji satysfakcji</strong>
+            <p>Jeśli w ciągu 14 dni uznasz, że to nie dla Ciebie — zwrócimy pieniądze bez pytań.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">FAQ</span>
+          <h2>Często zadawane <span class="gradient-text">pytania</span></h2>
+        </div>
+
+        <div class="faq-grid">
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Czy AI naprawdę brzmi naturalnie?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+            <div class="faq-answer">
+              Tak! Używamy najnowszych modeli AI do syntezy mowy po polsku. Głos brzmi naturalnie i profesjonalnie — klienci często nie rozpoznają, że rozmawiają z AI.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Co jeśli klient chce rozmawiać z człowiekiem?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+            <div class="faq-answer">
+              AI może w każdej chwili przekierować rozmowę do Ciebie lub umówić callback. Dostajesz powiadomienie SMS/email i możesz oddzwonić w dogodnym momencie.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Jakie systemy fakturowe obsługujecie?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+            <div class="faq-answer">
+              Na start integrujemy z: Fakturownia, wFirma, inFakt. Możesz też importować faktury przez CSV. Pracujemy nad kolejnymi integracjami — daj znać czego potrzebujesz.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Jak szybko mogę zacząć?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+            <div class="faq-answer">
+              Wdrożenie trwa 24 godziny. Po demo i wyborze planu podłączamy Twój system fakturowy, konfigurujemy treści przypomnień i uruchamiamy automatyzację.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta" id="cta">
+      <div class="cta-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+      </div>
+      <div class="container">
+        <h2>Gotowy odzyskać swoje pieniądze?</h2>
+        <p>Umów bezpłatne demo i zobacz jak AI może odzyskiwać Twoje faktury. Bez zobowiązań.</p>
+
+        <form class="cta-form" name="demo" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/dziekujemy">
+          <input type="hidden" name="form-name" value="demo" />
+          <p hidden><label>Nie wypełniaj: <input name="bot-field" /></label></p>
+          <div class="form-wrapper">
+            <input type="email" name="email" placeholder="Twój email firmowy" required />
+            <button type="submit" class="btn-primary">
+              Umów bezpłatne demo
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+          </div>
+        </form>
+
+        <div class="cta-note">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+          Odezwiemy się w ciągu 24h. Zero spamu, obiecujemy.
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <span class="logo-icon">⚡</span> OdzyskajFakturę
+          </div>
+          <div class="footer-links">
+            <a href="mailto:adam@codegardenai.com">Kontakt</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 OdzyskajFakture.pl | Wszystkie prawa zastrzeżone</p>
+        </div>
+      </div>
+    </footer>
+
     <style>
       :root {
         --primary: #6366f1;
         --primary-light: #818cf8;
         --primary-dark: #4f46e5;
-        --accent: #06b6d4;
+        --secondary: #06b6d4;
+        --accent: #f59e0b;
+        --success: #10b981;
         --text: #0f172a;
-        --text-secondary: #64748b;
+        --text-secondary: #475569;
         --text-muted: #94a3b8;
         --bg: #ffffff;
         --bg-secondary: #f8fafc;
         --bg-dark: #0f172a;
         --border: #e2e8f0;
-        --success: #10b981;
         --gradient-1: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
         --gradient-2: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+        --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+        --shadow-xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+        --radius: 16px;
+        --radius-lg: 24px;
       }
 
       * {
@@ -58,44 +532,13 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
         padding: 0 24px;
       }
 
-      /* Animations */
-      @keyframes float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
-      }
-
-      @keyframes pulse-glow {
-        0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
-        50% { box-shadow: 0 0 40px rgba(99, 102, 241, 0.5); }
-      }
-
-      @keyframes gradient-shift {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-      }
-
-      @keyframes fade-up {
-        from { opacity: 0; transform: translateY(30px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-
-      .fade-up {
-        animation: fade-up 0.8s ease-out forwards;
-      }
-
-      .delay-1 { animation-delay: 0.1s; opacity: 0; }
-      .delay-2 { animation-delay: 0.2s; opacity: 0; }
-      .delay-3 { animation-delay: 0.3s; opacity: 0; }
-      .delay-4 { animation-delay: 0.4s; opacity: 0; }
-
       /* Navigation */
       nav {
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
-        z-index: 100;
+        z-index: 1000;
         padding: 16px 0;
         background: rgba(255, 255, 255, 0.8);
         backdrop-filter: blur(20px);
@@ -109,21 +552,42 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
       }
 
       .logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
         font-weight: 800;
         font-size: 20px;
-        background: var(--gradient-1);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        color: var(--text);
+      }
+
+      .logo-icon {
+        font-size: 24px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 32px;
+      }
+
+      .nav-links a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 14px;
+        transition: color 0.2s;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
       }
 
       .nav-cta {
         padding: 10px 20px;
         background: var(--text);
         color: white;
-        border-radius: 8px;
+        border-radius: 10px;
         text-decoration: none;
-        font-weight: 500;
+        font-weight: 600;
         font-size: 14px;
         transition: all 0.2s;
       }
@@ -135,25 +599,74 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
 
       /* Hero */
       .hero {
-        padding: 160px 0 100px;
+        padding: 140px 0 80px;
         position: relative;
+        overflow: hidden;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+      }
+
+      .hero-bg {
+        position: absolute;
+        inset: 0;
         overflow: hidden;
       }
 
-      .hero::before {
-        content: '';
+      .gradient-orb {
         position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(circle at 30% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
-                    radial-gradient(circle at 70% 80%, rgba(6, 182, 212, 0.08) 0%, transparent 50%);
-        pointer-events: none;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.5;
+      }
+
+      .orb-1 {
+        width: 600px;
+        height: 600px;
+        background: var(--primary);
+        top: -200px;
+        right: -100px;
+        opacity: 0.15;
+      }
+
+      .orb-2 {
+        width: 400px;
+        height: 400px;
+        background: var(--secondary);
+        bottom: -100px;
+        left: -100px;
+        opacity: 0.15;
+      }
+
+      .orb-3 {
+        width: 300px;
+        height: 300px;
+        background: var(--accent);
+        top: 50%;
+        left: 50%;
+        opacity: 0.1;
+      }
+
+      .grid-pattern {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(var(--border) 1px, transparent 1px),
+          linear-gradient(90deg, var(--border) 1px, transparent 1px);
+        background-size: 60px 60px;
+        opacity: 0.5;
+        mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+      }
+
+      .hero .container {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+        align-items: center;
       }
 
       .hero-content {
-        text-align: center;
         position: relative;
         z-index: 1;
       }
@@ -163,25 +676,22 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
         align-items: center;
         gap: 8px;
         padding: 8px 16px;
-        background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%);
-        border: 1px solid rgba(99, 102, 241, 0.2);
+        background: white;
+        border: 1px solid var(--border);
         border-radius: 100px;
         font-size: 14px;
         font-weight: 500;
-        color: var(--primary);
-        margin-bottom: 32px;
+        color: var(--text-secondary);
+        margin-bottom: 24px;
+        box-shadow: var(--shadow-sm);
       }
 
-      .badge-dot {
-        width: 8px;
-        height: 8px;
-        background: var(--success);
-        border-radius: 50%;
-        animation: pulse-glow 2s infinite;
+      .badge-icon {
+        font-size: 16px;
       }
 
       h1 {
-        font-size: clamp(40px, 6vw, 72px);
+        font-size: 56px;
         font-weight: 800;
         line-height: 1.1;
         margin-bottom: 24px;
@@ -190,491 +700,711 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
 
       .gradient-text {
         background: var(--gradient-1);
-        background-size: 200% 200%;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        animation: gradient-shift 5s ease infinite;
       }
 
       .subtitle {
-        font-size: 20px;
+        font-size: 18px;
         color: var(--text-secondary);
-        max-width: 600px;
-        margin: 0 auto 48px;
+        margin-bottom: 32px;
         line-height: 1.7;
       }
 
-      /* CTA Form */
-      .cta-form {
-        max-width: 480px;
-        margin: 0 auto;
+      .subtitle strong {
+        color: var(--text);
       }
 
-      .form-wrapper {
+      .hero-cta {
         display: flex;
-        gap: 12px;
-        padding: 8px;
-        background: white;
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05),
-                    0 20px 40px -15px rgba(99, 102, 241, 0.15);
-      }
-
-      .form-wrapper:focus-within {
-        border-color: var(--primary);
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05),
-                    0 20px 40px -15px rgba(99, 102, 241, 0.25),
-                    0 0 0 4px rgba(99, 102, 241, 0.1);
-      }
-
-      input[type="email"] {
-        flex: 1;
-        padding: 16px 20px;
-        font-size: 16px;
-        border: none;
-        background: transparent;
-        outline: none;
-        font-family: inherit;
-      }
-
-      input[type="email"]::placeholder {
-        color: var(--text-muted);
+        gap: 16px;
+        margin-bottom: 48px;
       }
 
       .btn-primary {
-        padding: 16px 32px;
-        font-size: 16px;
-        font-weight: 600;
-        color: white;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 16px 28px;
         background: var(--gradient-1);
-        background-size: 200% 200%;
+        color: white;
         border: none;
         border-radius: 12px;
+        font-size: 16px;
+        font-weight: 600;
+        text-decoration: none;
         cursor: pointer;
         transition: all 0.3s;
-        white-space: nowrap;
         font-family: inherit;
       }
 
       .btn-primary:hover {
         transform: translateY(-2px);
-        box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.5);
-        animation: gradient-shift 3s ease infinite;
+        box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.5);
       }
 
-      .form-note {
-        display: flex;
+      .btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 16px 28px;
+        background: white;
+        color: var(--text);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+
+      .btn-secondary:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+      }
+
+      .btn-outline {
+        display: inline-flex;
         align-items: center;
         justify-content: center;
         gap: 8px;
-        font-size: 14px;
-        color: var(--text-muted);
-        margin-top: 16px;
-      }
-
-      .form-note svg {
-        width: 16px;
-        height: 16px;
-        color: var(--success);
-      }
-
-      /* Social Proof */
-      .social-proof {
-        margin-top: 64px;
-        padding-top: 64px;
-        border-top: 1px solid var(--border);
-      }
-
-      .social-proof-label {
-        font-size: 14px;
-        color: var(--text-muted);
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        margin-bottom: 24px;
-      }
-
-      .logos {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 48px;
-        flex-wrap: wrap;
-        opacity: 0.5;
-      }
-
-      .logo-placeholder {
-        font-size: 14px;
-        font-weight: 600;
-        color: var(--text-secondary);
-        padding: 12px 24px;
-        background: var(--bg-secondary);
-        border-radius: 8px;
-      }
-
-      /* Stats */
-      .stats {
-        padding: 80px 0;
-        background: var(--bg-secondary);
-      }
-
-      .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 32px;
-      }
-
-      .stat-card {
-        text-align: center;
-        padding: 40px;
-        background: white;
-        border-radius: 24px;
-        border: 1px solid var(--border);
-        transition: all 0.3s;
-      }
-
-      .stat-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.1);
-      }
-
-      .stat-number {
-        font-size: 56px;
-        font-weight: 800;
-        background: var(--gradient-1);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        line-height: 1;
-      }
-
-      .stat-label {
+        padding: 16px 28px;
+        background: transparent;
+        color: var(--text);
+        border: 2px solid var(--border);
+        border-radius: 12px;
         font-size: 16px;
-        color: var(--text-secondary);
-        margin-top: 12px;
-      }
-
-      /* Problem */
-      .problem {
-        padding: 100px 0;
-      }
-
-      .section-label {
-        display: inline-block;
-        font-size: 14px;
         font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s;
+        width: 100%;
+      }
+
+      .btn-outline:hover {
+        border-color: var(--primary);
         color: var(--primary);
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        margin-bottom: 16px;
       }
 
-      .section-title {
-        font-size: clamp(32px, 4vw, 48px);
-        font-weight: 800;
-        margin-bottom: 24px;
-        letter-spacing: -0.02em;
+      .btn-full {
+        width: 100%;
+        justify-content: center;
       }
 
-      .section-subtitle {
-        font-size: 18px;
-        color: var(--text-secondary);
-        max-width: 600px;
-        line-height: 1.7;
-      }
-
-      .problem-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 64px;
-        align-items: center;
-        margin-top: 64px;
-      }
-
-      .problem-list {
+      .hero-stats {
         display: flex;
-        flex-direction: column;
+        align-items: center;
         gap: 24px;
       }
 
-      .problem-item {
+      .hero-stat {
         display: flex;
-        gap: 16px;
-        padding: 24px;
-        background: white;
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        transition: all 0.3s;
+        flex-direction: column;
       }
 
-      .problem-item:hover {
-        border-color: var(--primary);
-        box-shadow: 0 10px 30px -15px rgba(99, 102, 241, 0.2);
+      .stat-value {
+        font-size: 28px;
+        font-weight: 800;
+        color: var(--text);
       }
 
-      .problem-icon {
-        width: 48px;
-        height: 48px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(249, 115, 22, 0.1) 100%);
-        border-radius: 12px;
-        font-size: 24px;
-        flex-shrink: 0;
-      }
-
-      .problem-content h4 {
-        font-size: 18px;
-        font-weight: 600;
-        margin-bottom: 4px;
-      }
-
-      .problem-content p {
+      .stat-desc {
         font-size: 14px;
-        color: var(--text-secondary);
+        color: var(--text-muted);
       }
 
-      .problem-visual {
+      .stat-divider {
+        width: 1px;
+        height: 40px;
+        background: var(--border);
+      }
+
+      /* Hero Visual */
+      .hero-visual {
         position: relative;
       }
 
       .phone-mockup {
         background: var(--gradient-2);
-        border-radius: 32px;
-        padding: 48px;
-        color: white;
+        border-radius: 40px;
+        padding: 12px;
+        box-shadow: var(--shadow-xl);
         position: relative;
-        overflow: hidden;
       }
 
-      .phone-mockup::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        pointer-events: none;
+      .phone-notch {
+        width: 120px;
+        height: 28px;
+        background: #000;
+        border-radius: 20px;
+        margin: 0 auto 16px;
       }
 
-      .mockup-header {
+      .phone-content {
+        background: #1e293b;
+        border-radius: 32px;
+        padding: 20px;
+        min-height: 400px;
+      }
+
+      .notification {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 16px;
+        border-radius: 16px;
+        margin-bottom: 12px;
+        backdrop-filter: blur(10px);
+      }
+
+      .notification.success {
+        background: rgba(16, 185, 129, 0.2);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+      }
+
+      .notif-icon {
+        font-size: 24px;
+      }
+
+      .notif-text {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .notif-text strong {
+        color: white;
         font-size: 14px;
-        opacity: 0.7;
-        margin-bottom: 24px;
       }
 
-      .mockup-stat {
-        font-size: 64px;
-        font-weight: 800;
-        line-height: 1;
-        margin-bottom: 8px;
+      .notif-text span {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 12px;
       }
 
-      .mockup-label {
-        font-size: 18px;
-        opacity: 0.9;
+      .notif-time {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 12px;
       }
 
-      .mockup-chart {
-        margin-top: 32px;
+      .stats-mini {
+        margin-top: 20px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+
+      .stats-mini-item {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .smi-value {
+        color: var(--success);
+        font-size: 24px;
+        font-weight: 700;
+      }
+
+      .smi-label {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 12px;
+      }
+
+      .stats-mini-chart {
         display: flex;
         align-items: flex-end;
-        gap: 8px;
-        height: 80px;
+        gap: 6px;
+        height: 50px;
       }
 
-      .chart-bar {
-        flex: 1;
+      .mini-bar {
+        width: 12px;
         background: rgba(255, 255, 255, 0.2);
         border-radius: 4px;
         transition: all 0.3s;
       }
 
-      .chart-bar:nth-child(1) { height: 40%; }
-      .chart-bar:nth-child(2) { height: 60%; }
-      .chart-bar:nth-child(3) { height: 45%; }
-      .chart-bar:nth-child(4) { height: 80%; }
-      .chart-bar:nth-child(5) { height: 65%; }
-      .chart-bar:nth-child(6) { height: 90%; background: var(--accent); }
-      .chart-bar:nth-child(7) { height: 100%; background: var(--success); }
-
-      /* Solution */
-      .solution {
-        padding: 100px 0;
-        background: var(--bg-secondary);
+      .mini-bar.active {
+        background: var(--success);
       }
 
-      .solution-header {
+      .floating-card {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 16px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: var(--shadow-lg);
+        font-size: 14px;
+        font-weight: 500;
+        animation: float 3s ease-in-out infinite;
+      }
+
+      .card-1 {
+        top: 20%;
+        left: -40px;
+        animation-delay: 0s;
+      }
+
+      .card-2 {
+        bottom: 30%;
+        right: -40px;
+        animation-delay: 1.5s;
+      }
+
+      .fc-icon {
+        font-size: 20px;
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+
+      /* Sections common */
+      .section-header {
         text-align: center;
         margin-bottom: 64px;
       }
 
-      .timeline {
-        max-width: 800px;
+      .section-badge {
+        display: inline-block;
+        padding: 6px 14px;
+        background: rgba(99, 102, 241, 0.1);
+        color: var(--primary);
+        border-radius: 100px;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+
+      .section-header h2 {
+        font-size: 42px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        margin-bottom: 16px;
+      }
+
+      .section-desc {
+        font-size: 18px;
+        color: var(--text-secondary);
+        max-width: 600px;
         margin: 0 auto;
-        position: relative;
       }
 
-      .timeline::before {
-        content: '';
-        position: absolute;
-        left: 32px;
-        top: 0;
-        bottom: 0;
-        width: 2px;
-        background: linear-gradient(to bottom, var(--primary), var(--accent));
+      /* Problem */
+      .problem {
+        padding: 100px 0;
+        background: var(--bg-secondary);
       }
 
-      .timeline-item {
-        display: flex;
-        gap: 32px;
-        margin-bottom: 32px;
-        position: relative;
+      .problem-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
       }
 
-      .timeline-icon {
-        width: 64px;
-        height: 64px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: white;
-        border: 2px solid var(--primary);
-        border-radius: 20px;
-        font-size: 28px;
-        flex-shrink: 0;
-        z-index: 1;
-        transition: all 0.3s;
-      }
-
-      .timeline-item:hover .timeline-icon {
-        background: var(--primary);
-        transform: scale(1.1);
-      }
-
-      .timeline-content {
-        flex: 1;
+      .problem-card {
         background: white;
         padding: 32px;
-        border-radius: 20px;
+        border-radius: var(--radius-lg);
         border: 1px solid var(--border);
         transition: all 0.3s;
       }
 
-      .timeline-item:hover .timeline-content {
+      .problem-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-lg);
         border-color: var(--primary);
-        box-shadow: 0 20px 40px -20px rgba(99, 102, 241, 0.2);
       }
 
-      .timeline-day {
-        display: inline-block;
-        font-size: 12px;
-        font-weight: 600;
-        color: var(--primary);
-        background: rgba(99, 102, 241, 0.1);
-        padding: 4px 12px;
-        border-radius: 100px;
-        margin-bottom: 12px;
+      .pc-icon {
+        font-size: 40px;
+        margin-bottom: 16px;
       }
 
-      .timeline-title {
+      .problem-card h3 {
         font-size: 20px;
         font-weight: 700;
         margin-bottom: 8px;
+      }
+
+      .problem-card p {
+        color: var(--text-secondary);
+        font-size: 15px;
+      }
+
+      /* Calculator */
+      .calculator {
+        padding: 100px 0;
+      }
+
+      .calc-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 48px;
+        box-shadow: var(--shadow-lg);
+      }
+
+      .calc-inputs {
         display: flex;
-        align-items: center;
+        flex-direction: column;
+        gap: 32px;
+      }
+
+      .calc-input-group label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 12px;
+      }
+
+      .input-with-slider {
+        display: flex;
+        flex-direction: column;
         gap: 12px;
       }
 
-      .killer-badge {
-        font-size: 11px;
-        font-weight: 700;
-        color: white;
-        background: var(--gradient-1);
-        padding: 4px 10px;
-        border-radius: 100px;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
+      input[type="range"] {
+        width: 100%;
+        height: 8px;
+        border-radius: 4px;
+        background: var(--bg-secondary);
+        outline: none;
+        -webkit-appearance: none;
       }
 
-      .timeline-desc {
-        color: var(--text-secondary);
-        line-height: 1.7;
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: var(--gradient-1);
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+      }
+
+      .input-value {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--primary);
+      }
+
+      .calc-results {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .calc-result-card {
+        background: var(--bg-secondary);
+        padding: 24px;
+        border-radius: var(--radius);
+        text-align: center;
+      }
+
+      .calc-result-card.main {
+        background: var(--gradient-2);
+        color: white;
+      }
+
+      .crc-label {
+        display: block;
+        font-size: 14px;
+        opacity: 0.8;
+        margin-bottom: 8px;
+      }
+
+      .crc-value {
+        display: block;
+        font-size: 36px;
+        font-weight: 800;
+      }
+
+      .crc-value.green {
+        color: var(--success);
+      }
+
+      .crc-sub {
+        display: block;
+        font-size: 12px;
+        opacity: 0.6;
+        margin-top: 4px;
+      }
+
+      .calc-result-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
       }
 
       /* How it works */
       .how {
         padding: 100px 0;
+        background: var(--bg-secondary);
       }
 
-      .how-header {
-        text-align: center;
-        margin-bottom: 64px;
-      }
-
-      .how-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 24px;
-      }
-
-      .how-card {
-        text-align: center;
-        padding: 40px 24px;
-        background: white;
-        border: 1px solid var(--border);
-        border-radius: 24px;
-        transition: all 0.3s;
+      .timeline {
+        max-width: 700px;
+        margin: 0 auto;
         position: relative;
       }
 
-      .how-card::before {
-        content: '';
+      .timeline-line {
         position: absolute;
-        top: 50%;
-        right: -12px;
-        width: 24px;
-        height: 2px;
-        background: var(--border);
+        left: 44px;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        border-radius: 2px;
       }
 
-      .how-card:last-child::before {
-        display: none;
-      }
-
-      .how-card:hover {
-        transform: translateY(-8px);
-        border-color: var(--primary);
-        box-shadow: 0 20px 40px -20px rgba(99, 102, 241, 0.2);
-      }
-
-      .how-number {
-        width: 48px;
-        height: 48px;
+      .timeline-item {
         display: flex;
+        gap: 32px;
+        margin-bottom: 48px;
+        position: relative;
+      }
+
+      .timeline-item.highlight .ti-content {
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(6, 182, 212, 0.05) 100%);
+        border-color: var(--primary);
+      }
+
+      .ti-marker {
+        width: 92px;
+        height: 92px;
+        background: white;
+        border: 4px solid var(--primary);
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        background: var(--gradient-1);
-        color: white;
-        font-weight: 700;
-        font-size: 20px;
-        border-radius: 16px;
-        margin: 0 auto 24px;
+        flex-shrink: 0;
+        z-index: 1;
       }
 
-      .how-title {
-        font-size: 18px;
+      .ti-marker span {
+        font-size: 28px;
+        font-weight: 800;
+        color: var(--primary);
+        line-height: 1;
+      }
+
+      .ti-marker small {
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+
+      .ti-content {
+        flex: 1;
+        background: white;
+        padding: 32px;
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border);
+      }
+
+      .ti-icon {
+        font-size: 32px;
+        margin-bottom: 12px;
+      }
+
+      .ti-badge {
+        display: inline-block;
+        padding: 4px 10px;
+        background: var(--gradient-1);
+        color: white;
+        border-radius: 100px;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+
+      .ti-content h3 {
+        font-size: 22px;
         font-weight: 700;
         margin-bottom: 8px;
       }
 
-      .how-desc {
+      .ti-content p {
+        color: var(--text-secondary);
+        margin-bottom: 16px;
+      }
+
+      .ti-example {
+        background: var(--bg-secondary);
+        padding: 16px;
+        border-radius: 12px;
         font-size: 14px;
         color: var(--text-secondary);
-        line-height: 1.6;
+        font-style: italic;
+      }
+
+      .ti-example-label {
+        display: block;
+        font-weight: 600;
+        color: var(--text);
+        font-style: normal;
+        margin-bottom: 4px;
+      }
+
+      .ti-features {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .ti-features span {
+        font-size: 14px;
+        color: var(--success);
+        font-weight: 500;
+      }
+
+      /* Pricing */
+      .pricing {
+        padding: 100px 0;
+      }
+
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-bottom: 48px;
+      }
+
+      .pricing-card {
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 32px;
+        position: relative;
+        transition: all 0.3s;
+      }
+
+      .pricing-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .pricing-card.popular {
+        border: 2px solid var(--primary);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .popular-badge {
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 6px 16px;
+        background: var(--gradient-1);
+        color: white;
+        border-radius: 100px;
+        font-size: 12px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
+      .pc-header {
+        margin-bottom: 24px;
+      }
+
+      .pc-header h3 {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+
+      .pc-header p {
+        color: var(--text-secondary);
+        font-size: 14px;
+      }
+
+      .pc-price {
+        margin-bottom: 24px;
+        padding-bottom: 24px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .price-value {
+        font-size: 48px;
+        font-weight: 800;
+      }
+
+      .price-currency {
+        font-size: 20px;
+        font-weight: 600;
+        vertical-align: top;
+      }
+
+      .price-period {
+        color: var(--text-muted);
+        font-size: 16px;
+      }
+
+      .pc-features {
+        list-style: none;
+        margin-bottom: 24px;
+      }
+
+      .pc-features li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 0;
+        font-size: 15px;
+      }
+
+      .pc-features li.disabled {
+        color: var(--text-muted);
+      }
+
+      .check {
+        color: var(--success);
+        font-weight: bold;
+      }
+
+      .x {
+        color: var(--text-muted);
+      }
+
+      .pricing-guarantee {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        padding: 24px;
+        background: rgba(16, 185, 129, 0.1);
+        border-radius: var(--radius);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .guarantee-icon {
+        font-size: 32px;
+      }
+
+      .guarantee-text strong {
+        display: block;
+        color: var(--text);
+      }
+
+      .guarantee-text p {
+        color: var(--text-secondary);
+        font-size: 14px;
+        margin: 0;
       }
 
       /* FAQ */
@@ -683,42 +1413,35 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
         background: var(--bg-secondary);
       }
 
-      .faq-header {
-        text-align: center;
-        margin-bottom: 64px;
-      }
-
       .faq-grid {
-        max-width: 800px;
+        max-width: 700px;
         margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
       }
 
       .faq-item {
         background: white;
         border: 1px solid var(--border);
-        border-radius: 16px;
+        border-radius: var(--radius);
+        margin-bottom: 12px;
         overflow: hidden;
-        transition: all 0.3s;
-      }
-
-      .faq-item:hover {
-        border-color: var(--primary);
       }
 
       .faq-question {
-        padding: 24px;
-        font-weight: 600;
-        cursor: pointer;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding: 20px 24px;
+        cursor: pointer;
+        font-weight: 600;
+      }
+
+      .faq-question svg {
+        color: var(--text-muted);
+        transition: transform 0.3s;
       }
 
       .faq-answer {
-        padding: 0 24px 24px;
+        padding: 0 24px 20px;
         color: var(--text-secondary);
         line-height: 1.7;
       }
@@ -733,16 +1456,25 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
         overflow: hidden;
       }
 
-      .final-cta::before {
-        content: '';
+      .cta-bg {
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: radial-gradient(circle at 30% 50%, rgba(99, 102, 241, 0.3) 0%, transparent 50%),
-                    radial-gradient(circle at 70% 50%, rgba(6, 182, 212, 0.3) 0%, transparent 50%);
-        pointer-events: none;
+        inset: 0;
+      }
+
+      .final-cta .orb-1 {
+        width: 500px;
+        height: 500px;
+        top: -200px;
+        left: -100px;
+        opacity: 0.3;
+      }
+
+      .final-cta .orb-2 {
+        width: 400px;
+        height: 400px;
+        bottom: -150px;
+        right: -100px;
+        opacity: 0.3;
       }
 
       .final-cta .container {
@@ -751,12 +1483,12 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
       }
 
       .final-cta h2 {
-        font-size: clamp(32px, 4vw, 48px);
+        font-size: 42px;
         font-weight: 800;
         margin-bottom: 16px;
       }
 
-      .final-cta p {
+      .final-cta > .container > p {
         font-size: 18px;
         opacity: 0.8;
         margin-bottom: 40px;
@@ -765,377 +1497,221 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
         margin-right: auto;
       }
 
-      .final-cta .form-wrapper {
+      .cta-form {
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .form-wrapper {
+        display: flex;
+        gap: 12px;
+        padding: 8px;
         background: rgba(255, 255, 255, 0.1);
-        border-color: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 16px;
         backdrop-filter: blur(20px);
       }
 
-      .final-cta input[type="email"] {
+      .form-wrapper input[type="email"] {
+        flex: 1;
+        padding: 16px 20px;
+        background: transparent;
+        border: none;
         color: white;
+        font-size: 16px;
+        outline: none;
+        font-family: inherit;
       }
 
-      .final-cta input[type="email"]::placeholder {
+      .form-wrapper input::placeholder {
         color: rgba(255, 255, 255, 0.5);
+      }
+
+      .cta-note {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 16px;
+        font-size: 14px;
+        opacity: 0.7;
       }
 
       /* Footer */
       footer {
-        padding: 32px 0;
+        padding: 48px 0 24px;
         background: var(--bg-dark);
-        color: var(--text-muted);
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 24px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .footer-brand {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: white;
+        font-weight: 700;
+        font-size: 18px;
+      }
+
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.6);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .footer-links a:hover {
+        color: white;
+      }
+
+      .footer-bottom {
+        padding-top: 24px;
         text-align: center;
         font-size: 14px;
       }
 
-      footer a {
-        color: var(--text-muted);
-        text-decoration: none;
-      }
-
-      footer a:hover {
-        color: white;
-      }
-
       /* Responsive */
-      @media (max-width: 900px) {
-        .stats-grid {
+      @media (max-width: 1024px) {
+        .hero .container {
           grid-template-columns: 1fr;
+          text-align: center;
         }
 
-        .problem-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .how-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .how-card::before {
+        .hero-visual {
           display: none;
         }
 
-        .timeline::before {
-          left: 20px;
+        .hero-cta {
+          justify-content: center;
         }
 
-        .timeline-icon {
-          width: 40px;
-          height: 40px;
-          font-size: 18px;
+        .hero-stats {
+          justify-content: center;
+        }
+
+        h1 {
+          font-size: 42px;
+        }
+
+        .problem-grid,
+        .pricing-grid {
+          grid-template-columns: 1fr;
+          max-width: 400px;
+          margin: 0 auto;
+        }
+
+        .calc-wrapper {
+          grid-template-columns: 1fr;
+        }
+
+        .nav-links {
+          display: none;
         }
       }
 
       @media (max-width: 600px) {
+        h1 {
+          font-size: 32px;
+        }
+
+        .section-header h2 {
+          font-size: 28px;
+        }
+
+        .hero-cta {
+          flex-direction: column;
+        }
+
+        .hero-stats {
+          flex-direction: column;
+          gap: 16px;
+        }
+
+        .stat-divider {
+          display: none;
+        }
+
         .form-wrapper {
           flex-direction: column;
         }
 
-        .btn-primary {
-          width: 100%;
+        .timeline-line {
+          left: 24px;
         }
 
-        .how-grid {
+        .ti-marker {
+          width: 52px;
+          height: 52px;
+        }
+
+        .ti-marker span {
+          font-size: 18px;
+        }
+
+        .ti-marker small {
+          display: none;
+        }
+
+        .calc-result-row {
           grid-template-columns: 1fr;
-        }
-
-        .timeline {
-          padding-left: 0;
-        }
-
-        .timeline::before {
-          display: none;
-        }
-
-        .timeline-icon {
-          display: none;
-        }
-
-        .timeline-item {
-          gap: 0;
         }
       }
     </style>
-  </head>
-  <body>
-    <!-- Navigation -->
-    <nav>
-      <div class="container">
-        <div class="logo">OdzyskajFakture</div>
-        <a href="#cta" class="nav-cta">Umów demo</a>
-      </div>
-    </nav>
 
-    <!-- Hero -->
-    <section class="hero">
-      <div class="container">
-        <div class="hero-content">
-          <div class="badge fade-up">
-            <span class="badge-dot"></span>
-            Nowość w Polsce
-          </div>
-          <h1 class="fade-up delay-1">
-            Klienci nie płacą?<br>
-            <span class="gradient-text">AI dzwoni za Ciebie.</span>
-          </h1>
-          <p class="subtitle fade-up delay-2">
-            Automatyczne przypomnienia SMS, email i telefon od AI.
-            Odzyskaj zaległe płatności bez dzwonienia i stresu.
-          </p>
+    <script>
+      // Calculator logic
+      const invoicesSlider = document.getElementById('invoices');
+      const avgValueSlider = document.getElementById('avg-value');
+      const latePercentSlider = document.getElementById('late-percent');
 
-          <form class="cta-form fade-up delay-3" name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/dziekujemy">
-            <input type="hidden" name="form-name" value="waitlist" />
-            <p hidden><label>Nie wypełniaj: <input name="bot-field" /></label></p>
-            <div class="form-wrapper">
-              <input type="email" name="email" placeholder="Wpisz swój email" required />
-              <button type="submit" class="btn-primary">Umów bezpłatne demo</button>
-            </div>
-            <p class="form-note">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              Odezwiemy się w ciągu 24h
-            </p>
-          </form>
+      const invoicesValue = document.getElementById('invoices-value');
+      const avgValueDisplay = document.getElementById('avg-value-display');
+      const latePercentValue = document.getElementById('late-percent-value');
 
-          <div class="social-proof fade-up delay-4">
-            <p class="social-proof-label">Dla firm z branż</p>
-            <div class="logos">
-              <span class="logo-placeholder">Hurtownie</span>
-              <span class="logo-placeholder">Agencje</span>
-              <span class="logo-placeholder">Software house</span>
-              <span class="logo-placeholder">Usługi B2B</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+      const monthlyLoss = document.getElementById('monthly-loss');
+      const recoverValue = document.getElementById('recover-value');
+      const roiValue = document.getElementById('roi-value');
 
-    <!-- Stats -->
-    <section class="stats">
-      <div class="container">
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-number">30%</div>
-            <div class="stat-label">faktur B2B jest płaconych po terminie</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">65%</div>
-            <div class="stat-label">klientów płaci gdy im przypomnisz</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">0</div>
-            <div class="stat-label">osób lubi dzwonić po swoje pieniądze</div>
-          </div>
-        </div>
-      </div>
-    </section>
+      function formatNumber(num) {
+        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+      }
 
-    <!-- Problem -->
-    <section class="problem">
-      <div class="container">
-        <span class="section-label">Problem</span>
-        <h2 class="section-title">Znasz to uczucie?</h2>
-        <p class="section-subtitle">
-          Wykonujesz pracę, wystawiasz fakturę, a potem... cisza.
-          I zaczyna się nieprzyjemna zabawa w windykatora.
-        </p>
+      function calculate() {
+        const invoices = parseInt(invoicesSlider.value);
+        const avgValue = parseInt(avgValueSlider.value);
+        const latePercent = parseInt(latePercentSlider.value);
 
-        <div class="problem-grid">
-          <div class="problem-list">
-            <div class="problem-item">
-              <div class="problem-icon">😤</div>
-              <div class="problem-content">
-                <h4>Tracisz czas na przypominanie</h4>
-                <p>Zamiast rozwijać biznes, dzwonisz i piszesz maile "w sprawie faktury"</p>
-              </div>
-            </div>
-            <div class="problem-item">
-              <div class="problem-icon">💸</div>
-              <div class="problem-content">
-                <h4>Cashflow cierpi</h4>
-                <p>Płacisz ZUS, pracownikom, dostawcom - ale Twoje faktury leżą nieopłacone</p>
-              </div>
-            </div>
-            <div class="problem-item">
-              <div class="problem-icon">😰</div>
-              <div class="problem-content">
-                <h4>Niezręczne rozmowy</h4>
-                <p>Dzwonienie po pieniądze to stres. Szczególnie gdy to Twój dobry klient.</p>
-              </div>
-            </div>
-          </div>
+        // Update displays
+        invoicesValue.textContent = invoices;
+        avgValueDisplay.textContent = formatNumber(avgValue);
+        latePercentValue.textContent = latePercent;
 
-          <div class="problem-visual">
-            <div class="phone-mockup">
-              <div class="mockup-header">Niezapłacone faktury</div>
-              <div class="mockup-stat">47 280 zł</div>
-              <div class="mockup-label">czeka na Twoje pieniądze</div>
-              <div class="mockup-chart">
-                <div class="chart-bar"></div>
-                <div class="chart-bar"></div>
-                <div class="chart-bar"></div>
-                <div class="chart-bar"></div>
-                <div class="chart-bar"></div>
-                <div class="chart-bar"></div>
-                <div class="chart-bar"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        // Calculate
+        const lateInvoices = Math.round(invoices * (latePercent / 100));
+        const totalLate = lateInvoices * avgValue;
+        const recovered = Math.round(totalLate * 0.65); // 65% recovery rate
+        const monthlyFee = 597; // Pro plan
+        const roi = Math.round((recovered / monthlyFee) * 100);
 
-    <!-- Solution -->
-    <section class="solution">
-      <div class="container">
-        <div class="solution-header">
-          <span class="section-label">Rozwiązanie</span>
-          <h2 class="section-title">AI Windykator działa za Ciebie</h2>
-          <p class="section-subtitle">
-            Automatyczna sekwencja przypomnień. Od delikatnego SMS-a po telefon od AI.
-          </p>
-        </div>
+        // Update results
+        monthlyLoss.textContent = formatNumber(totalLate) + ' PLN';
+        recoverValue.textContent = formatNumber(recovered) + ' PLN';
+        roiValue.textContent = formatNumber(roi) + '%';
+      }
 
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-icon">💬</div>
-            <div class="timeline-content">
-              <span class="timeline-day">Dzień +3 po terminie</span>
-              <h3 class="timeline-title">SMS przypomnienie</h3>
-              <p class="timeline-desc">
-                Krótki, profesjonalny SMS: "Przypominamy o fakturze FV/2024/001 na kwotę 2500 zł.
-                Termin płatności minął 3 dni temu."
-              </p>
-            </div>
-          </div>
+      invoicesSlider.addEventListener('input', calculate);
+      avgValueSlider.addEventListener('input', calculate);
+      latePercentSlider.addEventListener('input', calculate);
 
-          <div class="timeline-item">
-            <div class="timeline-icon">📧</div>
-            <div class="timeline-content">
-              <span class="timeline-day">Dzień +7 po terminie</span>
-              <h3 class="timeline-title">Email z fakturą</h3>
-              <p class="timeline-desc">
-                Profesjonalny email z załączoną fakturą PDF i linkiem do szybkiej płatności online.
-                Automatyczny, ale brzmi jak napisany przez człowieka.
-              </p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-icon">📞</div>
-            <div class="timeline-content">
-              <span class="timeline-day">Dzień +14 po terminie</span>
-              <h3 class="timeline-title">
-                Telefon od AI
-                <span class="killer-badge">Killer Feature</span>
-              </h3>
-              <p class="timeline-desc">
-                Naturalny głos AI dzwoni do klienta. Grzecznie ale stanowczo przypomina o płatności.
-                Jeśli klient chce rozmawiać - przekierowanie do Ciebie.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- How it works -->
-    <section class="how">
-      <div class="container">
-        <div class="how-header">
-          <span class="section-label">Jak to działa</span>
-          <h2 class="section-title">Proste wdrożenie w 4 krokach</h2>
-        </div>
-
-        <div class="how-grid">
-          <div class="how-card">
-            <div class="how-number">1</div>
-            <h3 class="how-title">Podłącz faktury</h3>
-            <p class="how-desc">Integracja z Fakturownia, wFirma, inFakt lub import CSV</p>
-          </div>
-          <div class="how-card">
-            <div class="how-number">2</div>
-            <h3 class="how-title">Ustaw reguły</h3>
-            <p class="how-desc">Określ kiedy wysyłać przypomnienia i do kogo</p>
-          </div>
-          <div class="how-card">
-            <div class="how-number">3</div>
-            <h3 class="how-title">AI działa</h3>
-            <p class="how-desc">System automatycznie monitoruje i przypomina</p>
-          </div>
-          <div class="how-card">
-            <div class="how-number">4</div>
-            <h3 class="how-title">Kasa wraca</h3>
-            <p class="how-desc">Ty skupiasz się na biznesie, faktury się opłacają</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="faq">
-      <div class="container">
-        <div class="faq-header">
-          <span class="section-label">FAQ</span>
-          <h2 class="section-title">Często zadawane pytania</h2>
-        </div>
-
-        <div class="faq-grid">
-          <div class="faq-item">
-            <div class="faq-question">Czy AI naprawdę brzmi naturalnie?</div>
-            <div class="faq-answer">
-              Tak! Używamy najnowszych modeli text-to-speech po polsku. Głos brzmi naturalnie,
-              nie jak robot. Klient często nie rozpoznaje, że rozmawia z AI.
-            </div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-question">Co jeśli klient chce rozmawiać z człowiekiem?</div>
-            <div class="faq-answer">
-              AI może przekierować rozmowę do Ciebie lub umówić callback.
-              Dostajesz powiadomienie i możesz oddzwonić w dogodnym momencie.
-            </div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-question">Jakie systemy fakturowe obsługujecie?</div>
-            <div class="faq-answer">
-              Na start: Fakturownia, wFirma, inFakt. Możesz też importować faktury z CSV.
-              Kolejne integracje dodajemy na życzenie klientów.
-            </div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-question">Ile to kosztuje?</div>
-            <div class="faq-answer">
-              Planujemy model od 297 PLN/mies lub success fee 5% od odzyskanych kwot.
-              Dołącz do listy - pierwsi użytkownicy dostaną specjalną ofertę.
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Final CTA -->
-    <section class="final-cta" id="cta">
-      <div class="container">
-        <h2>Gotowy odzyskać swoje pieniądze?</h2>
-        <p>Umów bezpłatne demo i zobacz jak AI może odzyskiwać Twoje faktury.</p>
-
-        <form class="cta-form" name="demo" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/dziekujemy">
-          <input type="hidden" name="form-name" value="demo" />
-          <p hidden><label>Nie wypełniaj: <input name="bot-field" /></label></p>
-          <div class="form-wrapper">
-            <input type="email" name="email" placeholder="Twój email firmowy" required />
-            <button type="submit" class="btn-primary">Umów demo</button>
-          </div>
-        </form>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-      <div class="container">
-        <p>&copy; 2026 OdzyskajFakture.pl | <a href="mailto:adam@codegardenai.com">Kontakt</a></p>
-      </div>
-    </footer>
+      // Initial calculation
+      calculate();
+    </script>
   </body>
 </html>
