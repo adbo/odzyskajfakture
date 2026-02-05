@@ -28,9 +28,9 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
         <div class="nav-links">
           <a href="#jak-dziala">Jak działa</a>
           <a href="#kalkulator">Kalkulator</a>
-          <a href="#cennik">Cennik</a>
+          <a href="#faq">FAQ</a>
         </div>
-        <a href="#cta" class="nav-cta">Umów demo</a>
+        <a href="#cta" class="nav-cta">Dołącz do listy</a>
       </div>
     </nav>
 
@@ -45,8 +45,8 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
       <div class="container">
         <div class="hero-content">
           <div class="badge">
-            <span class="badge-icon">🇵🇱</span>
-            Pierwsze takie rozwiązanie w Polsce
+            <span class="badge-dot"></span>
+            Wkrótce startujemy — bądź pierwszy!
           </div>
           <h1>
             Przestań gonić<br>
@@ -57,18 +57,26 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
             SMS, email, a nawet <strong>telefon</strong> — wszystko bez Twojego udziału.
           </p>
 
-          <div class="hero-cta">
-            <a href="#cta" class="btn-primary">
-              Umów bezpłatne demo
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </a>
-            <a href="#jak-dziala" class="btn-secondary">Zobacz jak działa</a>
-          </div>
+          <form class="hero-form" name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/dziekujemy">
+            <input type="hidden" name="form-name" value="waitlist" />
+            <p hidden><label>Nie wypełniaj: <input name="bot-field" /></label></p>
+            <div class="form-wrapper">
+              <input type="email" name="email" placeholder="Twój email firmowy" required />
+              <button type="submit" class="btn-primary">
+                Zapisz się
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </button>
+            </div>
+          </form>
+          <p class="form-note">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+            Dołącz do listy oczekujących. Zero spamu — tylko ważne info o starcie.
+          </p>
 
           <div class="hero-stats">
             <div class="hero-stat">
-              <span class="stat-value">24h</span>
-              <span class="stat-desc">Wdrożenie</span>
+              <span class="stat-value">🇵🇱</span>
+              <span class="stat-desc">Pierwsze takie w Polsce</span>
             </div>
             <div class="stat-divider"></div>
             <div class="hero-stat">
@@ -218,14 +226,14 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
               </div>
 
               <div class="calc-result-card">
-                <span class="crc-label">Zwrot z inwestycji (ROI)</span>
-                <span class="crc-value green" id="roi-value">5 400%</span>
-                <span class="crc-sub">przy planie Pro</span>
+                <span class="crc-label">Oszczędność czasu</span>
+                <span class="crc-value green" id="time-saved">8 godz</span>
+                <span class="crc-sub">miesięcznie</span>
               </div>
             </div>
 
             <a href="#cta" class="btn-primary btn-full">
-              Zacznij odzyskiwać pieniądze
+              Dołącz do listy oczekujących
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </a>
           </div>
@@ -298,95 +306,33 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
       </div>
     </section>
 
-    <!-- Pricing -->
-    <section class="pricing" id="cennik">
+    <!-- Social Proof / Coming Soon -->
+    <section class="coming-soon">
       <div class="container">
-        <div class="section-header">
-          <span class="section-badge">Cennik</span>
-          <h2>Prosty i przejrzysty <span class="gradient-text">cennik</span></h2>
-          <p class="section-desc">Wybierz plan dopasowany do Twojego biznesu. Bez ukrytych kosztów.</p>
-        </div>
-
-        <div class="pricing-grid">
-          <div class="pricing-card">
-            <div class="pc-header">
-              <h3>Starter</h3>
-              <p>Dla małych firm i freelancerów</p>
+        <div class="coming-card">
+          <div class="coming-icon">🚀</div>
+          <h3>Startujemy wkrótce</h3>
+          <p>Pracujemy nad finalnymi integracjami z popularnymi systemami fakturowania (Fakturownia, wFirma, inFakt). Dołącz do listy, a powiadomimy Cię jako pierwszego.</p>
+          <div class="coming-features">
+            <div class="cf-item">
+              <span class="cf-check">✓</span>
+              <span>Integracja jednym klikiem</span>
             </div>
-            <div class="pc-price">
-              <span class="price-value">297</span>
-              <span class="price-currency">PLN</span>
-              <span class="price-period">/miesiąc</span>
+            <div class="cf-item">
+              <span class="cf-check">✓</span>
+              <span>Wdrożenie w 24h</span>
             </div>
-            <ul class="pc-features">
-              <li><span class="check">✓</span> Do 50 faktur miesięcznie</li>
-              <li><span class="check">✓</span> Przypomnienia SMS</li>
-              <li><span class="check">✓</span> Przypomnienia Email</li>
-              <li><span class="check">✓</span> Integracja z Fakturownia</li>
-              <li><span class="check">✓</span> Dashboard i raporty</li>
-              <li class="disabled"><span class="x">✗</span> Telefon od AI</li>
-              <li class="disabled"><span class="x">✗</span> Dedykowany opiekun</li>
-            </ul>
-            <a href="#cta" class="btn-outline">Wybierz Starter</a>
-          </div>
-
-          <div class="pricing-card popular">
-            <div class="popular-badge">Najpopularniejszy</div>
-            <div class="pc-header">
-              <h3>Pro</h3>
-              <p>Dla rosnących firm B2B</p>
+            <div class="cf-item">
+              <span class="cf-check">✓</span>
+              <span>Specjalna cena dla early adopters</span>
             </div>
-            <div class="pc-price">
-              <span class="price-value">597</span>
-              <span class="price-currency">PLN</span>
-              <span class="price-period">/miesiąc</span>
-            </div>
-            <ul class="pc-features">
-              <li><span class="check">✓</span> Do 200 faktur miesięcznie</li>
-              <li><span class="check">✓</span> Przypomnienia SMS</li>
-              <li><span class="check">✓</span> Przypomnienia Email</li>
-              <li><span class="check">✓</span> <strong>Telefon od AI</strong></li>
-              <li><span class="check">✓</span> Wszystkie integracje</li>
-              <li><span class="check">✓</span> Dashboard i raporty</li>
-              <li><span class="check">✓</span> Priorytetowe wsparcie</li>
-            </ul>
-            <a href="#cta" class="btn-primary">Wybierz Pro</a>
-          </div>
-
-          <div class="pricing-card">
-            <div class="pc-header">
-              <h3>Enterprise</h3>
-              <p>Dla dużych organizacji</p>
-            </div>
-            <div class="pc-price">
-              <span class="price-value">Wycena</span>
-              <span class="price-period">indywidualna</span>
-            </div>
-            <ul class="pc-features">
-              <li><span class="check">✓</span> Nieograniczona liczba faktur</li>
-              <li><span class="check">✓</span> Wszystkie kanały kontaktu</li>
-              <li><span class="check">✓</span> Custom integracje</li>
-              <li><span class="check">✓</span> Dedykowany opiekun</li>
-              <li><span class="check">✓</span> SLA 99.9%</li>
-              <li><span class="check">✓</span> Szkolenie zespołu</li>
-              <li><span class="check">✓</span> Własny branding</li>
-            </ul>
-            <a href="#cta" class="btn-outline">Skontaktuj się</a>
-          </div>
-        </div>
-
-        <div class="pricing-guarantee">
-          <div class="guarantee-icon">🛡️</div>
-          <div class="guarantee-text">
-            <strong>14 dni gwarancji satysfakcji</strong>
-            <p>Jeśli w ciągu 14 dni uznasz, że to nie dla Ciebie — zwrócimy pieniądze bez pytań.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- FAQ -->
-    <section class="faq">
+    <section class="faq" id="faq">
       <div class="container">
         <div class="section-header">
           <span class="section-badge">FAQ</span>
@@ -416,21 +362,21 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
 
           <div class="faq-item">
             <div class="faq-question">
-              <span>Jakie systemy fakturowe obsługujecie?</span>
+              <span>Jakie systemy fakturowe będziecie obsługiwać?</span>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
             </div>
             <div class="faq-answer">
-              Na start integrujemy z: Fakturownia, wFirma, inFakt. Możesz też importować faktury przez CSV. Pracujemy nad kolejnymi integracjami — daj znać czego potrzebujesz.
+              Na start integrujemy z: Fakturownia, wFirma, inFakt. Będzie też możliwość importu faktur przez CSV. Daj znać jakiego systemu używasz — dostosujemy priorytety!
             </div>
           </div>
 
           <div class="faq-item">
             <div class="faq-question">
-              <span>Jak szybko mogę zacząć?</span>
+              <span>Ile to będzie kosztować?</span>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
             </div>
             <div class="faq-answer">
-              Wdrożenie trwa 24 godziny. Po demo i wyborze planu podłączamy Twój system fakturowy, konfigurujemy treści przypomnień i uruchamiamy automatyzację.
+              Pracujemy nad cenami. Osoby z listy oczekujących dostaną specjalną ofertę early adopters — znacznie niższą cenę na stałe. Zapisz się, żeby nie przegapić!
             </div>
           </div>
         </div>
@@ -444,16 +390,17 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
         <div class="gradient-orb orb-2"></div>
       </div>
       <div class="container">
-        <h2>Gotowy odzyskać swoje pieniądze?</h2>
-        <p>Umów bezpłatne demo i zobacz jak AI może odzyskiwać Twoje faktury. Bez zobowiązań.</p>
+        <div class="cta-badge">🔥 Dołącz do early adopters</div>
+        <h2>Bądź pierwszy, gdy wystartujemy</h2>
+        <p>Zapisz się na listę oczekujących i odbierz specjalną cenę na start. Zero zobowiązań.</p>
 
-        <form class="cta-form" name="demo" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/dziekujemy">
-          <input type="hidden" name="form-name" value="demo" />
+        <form class="cta-form" name="waitlist-footer" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/dziekujemy">
+          <input type="hidden" name="form-name" value="waitlist-footer" />
           <p hidden><label>Nie wypełniaj: <input name="bot-field" /></label></p>
           <div class="form-wrapper">
             <input type="email" name="email" placeholder="Twój email firmowy" required />
             <button type="submit" class="btn-primary">
-              Umów bezpłatne demo
+              Dołącz do listy
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </button>
           </div>
@@ -461,7 +408,7 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
 
         <div class="cta-note">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
-          Odezwiemy się w ciągu 24h. Zero spamu, obiecujemy.
+          Zero spamu. Tylko ważne informacje o starcie.
         </div>
       </div>
     </section>
@@ -674,20 +621,28 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
       .badge {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
-        padding: 8px 16px;
-        background: white;
-        border: 1px solid var(--border);
+        gap: 10px;
+        padding: 10px 18px;
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%);
+        border: 1px solid rgba(99, 102, 241, 0.2);
         border-radius: 100px;
         font-size: 14px;
-        font-weight: 500;
-        color: var(--text-secondary);
+        font-weight: 600;
+        color: var(--primary);
         margin-bottom: 24px;
-        box-shadow: var(--shadow-sm);
       }
 
-      .badge-icon {
-        font-size: 16px;
+      .badge-dot {
+        width: 8px;
+        height: 8px;
+        background: var(--success);
+        border-radius: 50%;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.5; transform: scale(1.2); }
       }
 
       h1 {
@@ -716,9 +671,46 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
         color: var(--text);
       }
 
-      .hero-cta {
+      .hero-form {
+        margin-bottom: 16px;
+      }
+
+      .form-wrapper {
         display: flex;
-        gap: 16px;
+        gap: 12px;
+        padding: 8px;
+        background: white;
+        border: 2px solid var(--border);
+        border-radius: 16px;
+        box-shadow: var(--shadow-lg);
+        transition: border-color 0.3s;
+      }
+
+      .form-wrapper:focus-within {
+        border-color: var(--primary);
+      }
+
+      .form-wrapper input[type="email"] {
+        flex: 1;
+        padding: 16px 20px;
+        background: transparent;
+        border: none;
+        color: var(--text);
+        font-size: 16px;
+        outline: none;
+        font-family: inherit;
+      }
+
+      .form-wrapper input::placeholder {
+        color: var(--text-muted);
+      }
+
+      .form-note {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        color: var(--text-muted);
         margin-bottom: 48px;
       }
 
@@ -737,53 +729,12 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
         cursor: pointer;
         transition: all 0.3s;
         font-family: inherit;
+        white-space: nowrap;
       }
 
       .btn-primary:hover {
         transform: translateY(-2px);
         box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.5);
-      }
-
-      .btn-secondary {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 16px 28px;
-        background: white;
-        color: var(--text);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        font-size: 16px;
-        font-weight: 600;
-        text-decoration: none;
-        transition: all 0.3s;
-      }
-
-      .btn-secondary:hover {
-        border-color: var(--primary);
-        color: var(--primary);
-      }
-
-      .btn-outline {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        padding: 16px 28px;
-        background: transparent;
-        color: var(--text);
-        border: 2px solid var(--border);
-        border-radius: 12px;
-        font-size: 16px;
-        font-weight: 600;
-        text-decoration: none;
-        transition: all 0.3s;
-        width: 100%;
-      }
-
-      .btn-outline:hover {
-        border-color: var(--primary);
-        color: var(--primary);
       }
 
       .btn-full {
@@ -1272,139 +1223,58 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
         font-weight: 500;
       }
 
-      /* Pricing */
-      .pricing {
+      /* Coming Soon */
+      .coming-soon {
         padding: 100px 0;
       }
 
-      .pricing-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
-        margin-bottom: 48px;
-      }
-
-      .pricing-card {
-        background: white;
-        border: 1px solid var(--border);
-        border-radius: var(--radius-lg);
-        padding: 32px;
-        position: relative;
-        transition: all 0.3s;
-      }
-
-      .pricing-card:hover {
-        transform: translateY(-8px);
-        box-shadow: var(--shadow-lg);
-      }
-
-      .pricing-card.popular {
+      .coming-card {
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(6, 182, 212, 0.05) 100%);
         border: 2px solid var(--primary);
-        box-shadow: var(--shadow-lg);
-      }
-
-      .popular-badge {
-        position: absolute;
-        top: -12px;
-        left: 50%;
-        transform: translateX(-50%);
-        padding: 6px 16px;
-        background: var(--gradient-1);
-        color: white;
-        border-radius: 100px;
-        font-size: 12px;
-        font-weight: 700;
-        white-space: nowrap;
-      }
-
-      .pc-header {
-        margin-bottom: 24px;
-      }
-
-      .pc-header h3 {
-        font-size: 24px;
-        font-weight: 700;
-        margin-bottom: 4px;
-      }
-
-      .pc-header p {
-        color: var(--text-secondary);
-        font-size: 14px;
-      }
-
-      .pc-price {
-        margin-bottom: 24px;
-        padding-bottom: 24px;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .price-value {
-        font-size: 48px;
-        font-weight: 800;
-      }
-
-      .price-currency {
-        font-size: 20px;
-        font-weight: 600;
-        vertical-align: top;
-      }
-
-      .price-period {
-        color: var(--text-muted);
-        font-size: 16px;
-      }
-
-      .pc-features {
-        list-style: none;
-        margin-bottom: 24px;
-      }
-
-      .pc-features li {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 10px 0;
-        font-size: 15px;
-      }
-
-      .pc-features li.disabled {
-        color: var(--text-muted);
-      }
-
-      .check {
-        color: var(--success);
-        font-weight: bold;
-      }
-
-      .x {
-        color: var(--text-muted);
-      }
-
-      .pricing-guarantee {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 16px;
-        padding: 24px;
-        background: rgba(16, 185, 129, 0.1);
-        border-radius: var(--radius);
-        max-width: 600px;
+        border-radius: var(--radius-lg);
+        padding: 48px;
+        text-align: center;
+        max-width: 700px;
         margin: 0 auto;
       }
 
-      .guarantee-icon {
-        font-size: 32px;
+      .coming-icon {
+        font-size: 48px;
+        margin-bottom: 16px;
       }
 
-      .guarantee-text strong {
-        display: block;
-        color: var(--text);
+      .coming-card h3 {
+        font-size: 28px;
+        font-weight: 800;
+        margin-bottom: 16px;
       }
 
-      .guarantee-text p {
+      .coming-card > p {
         color: var(--text-secondary);
-        font-size: 14px;
-        margin: 0;
+        font-size: 16px;
+        margin-bottom: 32px;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .coming-features {
+        display: flex;
+        justify-content: center;
+        gap: 32px;
+        flex-wrap: wrap;
+      }
+
+      .cf-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 500;
+      }
+
+      .cf-check {
+        color: var(--success);
+        font-weight: bold;
       }
 
       /* FAQ */
@@ -1482,6 +1352,18 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
         z-index: 1;
       }
 
+      .cta-badge {
+        display: inline-block;
+        padding: 8px 16px;
+        background: rgba(245, 158, 11, 0.2);
+        border: 1px solid rgba(245, 158, 11, 0.3);
+        border-radius: 100px;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--accent);
+        margin-bottom: 24px;
+      }
+
       .final-cta h2 {
         font-size: 42px;
         font-weight: 800;
@@ -1502,28 +1384,17 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
         margin: 0 auto;
       }
 
-      .form-wrapper {
-        display: flex;
-        gap: 12px;
-        padding: 8px;
+      .cta-form .form-wrapper {
         background: rgba(255, 255, 255, 0.1);
         border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 16px;
         backdrop-filter: blur(20px);
       }
 
-      .form-wrapper input[type="email"] {
-        flex: 1;
-        padding: 16px 20px;
-        background: transparent;
-        border: none;
+      .cta-form .form-wrapper input[type="email"] {
         color: white;
-        font-size: 16px;
-        outline: none;
-        font-family: inherit;
       }
 
-      .form-wrapper input::placeholder {
+      .cta-form .form-wrapper input::placeholder {
         color: rgba(255, 255, 255, 0.5);
       }
 
@@ -1588,7 +1459,12 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
           display: none;
         }
 
-        .hero-cta {
+        .form-wrapper {
+          max-width: 500px;
+          margin: 0 auto;
+        }
+
+        .form-note {
           justify-content: center;
         }
 
@@ -1600,8 +1476,7 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
           font-size: 42px;
         }
 
-        .problem-grid,
-        .pricing-grid {
+        .problem-grid {
           grid-template-columns: 1fr;
           max-width: 400px;
           margin: 0 auto;
@@ -1614,6 +1489,11 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
         .nav-links {
           display: none;
         }
+
+        .coming-features {
+          flex-direction: column;
+          gap: 16px;
+        }
       }
 
       @media (max-width: 600px) {
@@ -1623,10 +1503,6 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
 
         .section-header h2 {
           font-size: 28px;
-        }
-
-        .hero-cta {
-          flex-direction: column;
         }
 
         .hero-stats {
@@ -1677,7 +1553,7 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
 
       const monthlyLoss = document.getElementById('monthly-loss');
       const recoverValue = document.getElementById('recover-value');
-      const roiValue = document.getElementById('roi-value');
+      const timeSaved = document.getElementById('time-saved');
 
       function formatNumber(num) {
         return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
@@ -1697,13 +1573,15 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
         const lateInvoices = Math.round(invoices * (latePercent / 100));
         const totalLate = lateInvoices * avgValue;
         const recovered = Math.round(totalLate * 0.65); // 65% recovery rate
-        const monthlyFee = 597; // Pro plan
-        const roi = Math.round((recovered / monthlyFee) * 100);
+
+        // Time saved: assume 10 min per late invoice for manual follow-up
+        const minutesSaved = lateInvoices * 10;
+        const hoursSaved = Math.round(minutesSaved / 60);
 
         // Update results
         monthlyLoss.textContent = formatNumber(totalLate) + ' PLN';
         recoverValue.textContent = formatNumber(recovered) + ' PLN';
-        roiValue.textContent = formatNumber(roi) + '%';
+        timeSaved.textContent = hoursSaved + ' godz';
       }
 
       invoicesSlider.addEventListener('input', calculate);
