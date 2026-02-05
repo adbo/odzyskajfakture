@@ -1,0 +1,425 @@
+---
+const title = "Odzyskaj Fakturę - AI dzwoni i odzyskuje Twoje pieniądze";
+const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzyskaj zaległe płatności bez dzwonienia.";
+---
+
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <title>{title}</title>
+    <style>
+      :root {
+        --primary: #2563eb;
+        --primary-dark: #1d4ed8;
+        --text: #1f2937;
+        --text-light: #6b7280;
+        --bg: #ffffff;
+        --bg-alt: #f9fafb;
+        --success: #10b981;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* Hero */
+      .hero {
+        padding: 80px 0 60px;
+        text-align: center;
+      }
+
+      .badge {
+        display: inline-block;
+        background: #dbeafe;
+        color: var(--primary);
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 24px;
+      }
+
+      h1 {
+        font-size: clamp(32px, 5vw, 48px);
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 24px;
+      }
+
+      .highlight {
+        color: var(--primary);
+      }
+
+      .subtitle {
+        font-size: 20px;
+        color: var(--text-light);
+        max-width: 600px;
+        margin: 0 auto 40px;
+      }
+
+      /* CTA Form */
+      .cta-form {
+        max-width: 440px;
+        margin: 0 auto;
+      }
+
+      .form-row {
+        display: flex;
+        gap: 12px;
+      }
+
+      input[type="email"] {
+        flex: 1;
+        padding: 16px 20px;
+        font-size: 16px;
+        border: 2px solid #e5e7eb;
+        border-radius: 8px;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+
+      input[type="email"]:focus {
+        border-color: var(--primary);
+      }
+
+      button {
+        padding: 16px 32px;
+        font-size: 16px;
+        font-weight: 600;
+        color: white;
+        background: var(--primary);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.2s;
+        white-space: nowrap;
+      }
+
+      button:hover {
+        background: var(--primary-dark);
+      }
+
+      .form-note {
+        font-size: 14px;
+        color: var(--text-light);
+        margin-top: 12px;
+      }
+
+      /* Problem */
+      .problem {
+        background: var(--bg-alt);
+        padding: 60px 0;
+      }
+
+      .section-title {
+        font-size: 28px;
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 24px;
+      }
+
+      .stat {
+        text-align: center;
+        padding: 24px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      }
+
+      .stat-number {
+        font-size: 48px;
+        font-weight: 700;
+        color: var(--primary);
+      }
+
+      .stat-label {
+        color: var(--text-light);
+        margin-top: 8px;
+      }
+
+      /* Solution */
+      .solution {
+        padding: 60px 0;
+      }
+
+      .steps {
+        display: grid;
+        gap: 32px;
+        margin-top: 40px;
+      }
+
+      .step {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+      }
+
+      .step-icon {
+        width: 48px;
+        height: 48px;
+        background: #dbeafe;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        flex-shrink: 0;
+      }
+
+      .step-day {
+        font-size: 14px;
+        color: var(--primary);
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+
+      .step-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+
+      .step-desc {
+        color: var(--text-light);
+      }
+
+      .killer {
+        background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+        padding: 4px 12px;
+        border-radius: 6px;
+        font-weight: 600;
+        color: var(--primary);
+      }
+
+      /* How it works */
+      .how {
+        background: var(--bg-alt);
+        padding: 60px 0;
+      }
+
+      .how-steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 24px;
+        margin-top: 40px;
+      }
+
+      .how-step {
+        text-align: center;
+        padding: 32px 24px;
+        background: white;
+        border-radius: 12px;
+      }
+
+      .how-number {
+        width: 40px;
+        height: 40px;
+        background: var(--primary);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        margin: 0 auto 16px;
+      }
+
+      .how-title {
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .how-desc {
+        font-size: 14px;
+        color: var(--text-light);
+      }
+
+      /* Final CTA */
+      .final-cta {
+        padding: 80px 0;
+        text-align: center;
+      }
+
+      .final-cta h2 {
+        font-size: 32px;
+        margin-bottom: 16px;
+      }
+
+      .final-cta p {
+        color: var(--text-light);
+        margin-bottom: 32px;
+      }
+
+      /* Footer */
+      footer {
+        padding: 24px 0;
+        text-align: center;
+        color: var(--text-light);
+        font-size: 14px;
+        border-top: 1px solid #e5e7eb;
+      }
+
+      /* Responsive */
+      @media (max-width: 600px) {
+        .form-row {
+          flex-direction: column;
+        }
+
+        button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <span class="badge">Wkrótce startujemy</span>
+        <h1>Klienci nie płacą faktur?<br><span class="highlight">AI dzwoni za Ciebie.</span></h1>
+        <p class="subtitle">Automatyczne przypomnienia SMS, email i telefon od AI. Odzyskaj zaległe płatności bez dzwonienia i stresu.</p>
+
+        <form class="cta-form" name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="waitlist" />
+          <p hidden><label>Nie wypełniaj: <input name="bot-field" /></label></p>
+          <div class="form-row">
+            <input type="email" name="email" placeholder="Twój email" required />
+            <button type="submit">Dołącz do listy</button>
+          </div>
+          <p class="form-note">Dołącz do listy oczekujących. Zero spamu.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Problem -->
+    <section class="problem">
+      <div class="container">
+        <h2 class="section-title">Problem z płatnościami?</h2>
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-number">30%</div>
+            <div class="stat-label">faktur B2B płaconych po terminie</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">65%</div>
+            <div class="stat-label">klientów płaci gdy im przypomnisz</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">0</div>
+            <div class="stat-label">osób lubi dzwonić po pieniądze</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solution -->
+    <section class="solution">
+      <div class="container">
+        <h2 class="section-title">Jak działa AI Windykator?</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-icon">💬</div>
+            <div>
+              <div class="step-day">Dzień +3</div>
+              <div class="step-title">SMS przypomnienie</div>
+              <div class="step-desc">Delikatne przypomnienie o zbliżającym się terminie płatności.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-icon">📧</div>
+            <div>
+              <div class="step-day">Dzień +7</div>
+              <div class="step-title">Email z fakturą</div>
+              <div class="step-desc">Profesjonalny email z załączoną fakturą i linkiem do płatności.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-icon">📞</div>
+            <div>
+              <div class="step-day">Dzień +14</div>
+              <div class="step-title">Telefon od AI <span class="killer">killer feature</span></div>
+              <div class="step-desc">Naturalny głos AI dzwoni do klienta. Grzecznie ale skutecznie przypomina o płatności.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how">
+      <div class="container">
+        <h2 class="section-title">Proste wdrożenie</h2>
+        <div class="how-steps">
+          <div class="how-step">
+            <div class="how-number">1</div>
+            <div class="how-title">Podłącz faktury</div>
+            <div class="how-desc">Integracja z Fakturownia, wFirma, inFakt</div>
+          </div>
+          <div class="how-step">
+            <div class="how-number">2</div>
+            <div class="how-title">AI monitoruje</div>
+            <div class="how-desc">System śledzi terminy płatności</div>
+          </div>
+          <div class="how-step">
+            <div class="how-number">3</div>
+            <div class="how-title">Automatyczne przypomnienia</div>
+            <div class="how-desc">SMS, email, telefon - bez Twojego udziału</div>
+          </div>
+          <div class="how-step">
+            <div class="how-number">4</div>
+            <div class="how-title">Kasa wraca</div>
+            <div class="how-desc">Ty skupiasz się na biznesie</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+      <div class="container">
+        <h2>Dołącz do listy oczekujących</h2>
+        <p>Bądź pierwszy gdy wystartujemy. Pierwsi użytkownicy dostaną specjalną ofertę.</p>
+        <form class="cta-form" name="waitlist-bottom" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="waitlist-bottom" />
+          <p hidden><label>Nie wypełniaj: <input name="bot-field" /></label></p>
+          <div class="form-row">
+            <input type="email" name="email" placeholder="Twój email" required />
+            <button type="submit">Powiadom mnie</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p>&copy; 2026 OdzyskajFakture.pl | Kontakt: adam@codegardenai.com</p>
+      </div>
+    </footer>
+  </body>
+</html>

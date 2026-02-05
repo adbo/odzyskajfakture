@@ -13,15 +13,25 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
       :root {
-        --primary: #2563eb;
-        --primary-dark: #1d4ed8;
-        --text: #1f2937;
-        --text-light: #6b7280;
+        --primary: #6366f1;
+        --primary-light: #818cf8;
+        --primary-dark: #4f46e5;
+        --accent: #06b6d4;
+        --text: #0f172a;
+        --text-secondary: #64748b;
+        --text-muted: #94a3b8;
         --bg: #ffffff;
-        --bg-alt: #f9fafb;
+        --bg-secondary: #f8fafc;
+        --bg-dark: #0f172a;
+        --border: #e2e8f0;
         --success: #10b981;
+        --gradient-1: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+        --gradient-2: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
       }
 
       * {
@@ -30,308 +40,947 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
         box-sizing: border-box;
       }
 
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         color: var(--text);
         line-height: 1.6;
+        background: var(--bg);
+        overflow-x: hidden;
       }
 
       .container {
-        max-width: 800px;
+        max-width: 1200px;
         margin: 0 auto;
         padding: 0 24px;
       }
 
+      /* Animations */
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+      }
+
+      @keyframes pulse-glow {
+        0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
+        50% { box-shadow: 0 0 40px rgba(99, 102, 241, 0.5); }
+      }
+
+      @keyframes gradient-shift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+
+      @keyframes fade-up {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .fade-up {
+        animation: fade-up 0.8s ease-out forwards;
+      }
+
+      .delay-1 { animation-delay: 0.1s; opacity: 0; }
+      .delay-2 { animation-delay: 0.2s; opacity: 0; }
+      .delay-3 { animation-delay: 0.3s; opacity: 0; }
+      .delay-4 { animation-delay: 0.4s; opacity: 0; }
+
+      /* Navigation */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        padding: 16px 0;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border);
+      }
+
+      nav .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-weight: 800;
+        font-size: 20px;
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .nav-cta {
+        padding: 10px 20px;
+        background: var(--text);
+        color: white;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 14px;
+        transition: all 0.2s;
+      }
+
+      .nav-cta:hover {
+        background: var(--primary);
+        transform: translateY(-2px);
+      }
+
       /* Hero */
       .hero {
-        padding: 80px 0 60px;
+        padding: 160px 0 100px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle at 30% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+                    radial-gradient(circle at 70% 80%, rgba(6, 182, 212, 0.08) 0%, transparent 50%);
+        pointer-events: none;
+      }
+
+      .hero-content {
         text-align: center;
+        position: relative;
+        z-index: 1;
       }
 
       .badge {
-        display: inline-block;
-        background: #dbeafe;
-        color: var(--primary);
-        padding: 6px 16px;
-        border-radius: 20px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%);
+        border: 1px solid rgba(99, 102, 241, 0.2);
+        border-radius: 100px;
         font-size: 14px;
         font-weight: 500;
-        margin-bottom: 24px;
+        color: var(--primary);
+        margin-bottom: 32px;
+      }
+
+      .badge-dot {
+        width: 8px;
+        height: 8px;
+        background: var(--success);
+        border-radius: 50%;
+        animation: pulse-glow 2s infinite;
       }
 
       h1 {
-        font-size: clamp(32px, 5vw, 48px);
-        font-weight: 700;
-        line-height: 1.2;
+        font-size: clamp(40px, 6vw, 72px);
+        font-weight: 800;
+        line-height: 1.1;
         margin-bottom: 24px;
+        letter-spacing: -0.02em;
       }
 
-      .highlight {
-        color: var(--primary);
+      .gradient-text {
+        background: var(--gradient-1);
+        background-size: 200% 200%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: gradient-shift 5s ease infinite;
       }
 
       .subtitle {
         font-size: 20px;
-        color: var(--text-light);
+        color: var(--text-secondary);
         max-width: 600px;
-        margin: 0 auto 40px;
+        margin: 0 auto 48px;
+        line-height: 1.7;
       }
 
       /* CTA Form */
       .cta-form {
-        max-width: 440px;
+        max-width: 480px;
         margin: 0 auto;
       }
 
-      .form-row {
+      .form-wrapper {
         display: flex;
         gap: 12px;
+        padding: 8px;
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05),
+                    0 20px 40px -15px rgba(99, 102, 241, 0.15);
+      }
+
+      .form-wrapper:focus-within {
+        border-color: var(--primary);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05),
+                    0 20px 40px -15px rgba(99, 102, 241, 0.25),
+                    0 0 0 4px rgba(99, 102, 241, 0.1);
       }
 
       input[type="email"] {
         flex: 1;
         padding: 16px 20px;
         font-size: 16px;
-        border: 2px solid #e5e7eb;
-        border-radius: 8px;
+        border: none;
+        background: transparent;
         outline: none;
-        transition: border-color 0.2s;
+        font-family: inherit;
       }
 
-      input[type="email"]:focus {
-        border-color: var(--primary);
+      input[type="email"]::placeholder {
+        color: var(--text-muted);
       }
 
-      button {
+      .btn-primary {
         padding: 16px 32px;
         font-size: 16px;
         font-weight: 600;
         color: white;
-        background: var(--primary);
+        background: var(--gradient-1);
+        background-size: 200% 200%;
         border: none;
-        border-radius: 8px;
+        border-radius: 12px;
         cursor: pointer;
-        transition: background 0.2s;
+        transition: all 0.3s;
         white-space: nowrap;
+        font-family: inherit;
       }
 
-      button:hover {
-        background: var(--primary-dark);
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.5);
+        animation: gradient-shift 3s ease infinite;
       }
 
       .form-note {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
         font-size: 14px;
-        color: var(--text-light);
+        color: var(--text-muted);
+        margin-top: 16px;
+      }
+
+      .form-note svg {
+        width: 16px;
+        height: 16px;
+        color: var(--success);
+      }
+
+      /* Social Proof */
+      .social-proof {
+        margin-top: 64px;
+        padding-top: 64px;
+        border-top: 1px solid var(--border);
+      }
+
+      .social-proof-label {
+        font-size: 14px;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 24px;
+      }
+
+      .logos {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 48px;
+        flex-wrap: wrap;
+        opacity: 0.5;
+      }
+
+      .logo-placeholder {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text-secondary);
+        padding: 12px 24px;
+        background: var(--bg-secondary);
+        border-radius: 8px;
+      }
+
+      /* Stats */
+      .stats {
+        padding: 80px 0;
+        background: var(--bg-secondary);
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+      }
+
+      .stat-card {
+        text-align: center;
+        padding: 40px;
+        background: white;
+        border-radius: 24px;
+        border: 1px solid var(--border);
+        transition: all 0.3s;
+      }
+
+      .stat-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.1);
+      }
+
+      .stat-number {
+        font-size: 56px;
+        font-weight: 800;
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        line-height: 1;
+      }
+
+      .stat-label {
+        font-size: 16px;
+        color: var(--text-secondary);
         margin-top: 12px;
       }
 
       /* Problem */
       .problem {
-        background: var(--bg-alt);
-        padding: 60px 0;
+        padding: 100px 0;
+      }
+
+      .section-label {
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--primary);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 16px;
       }
 
       .section-title {
-        font-size: 28px;
-        text-align: center;
-        margin-bottom: 40px;
+        font-size: clamp(32px, 4vw, 48px);
+        font-weight: 800;
+        margin-bottom: 24px;
+        letter-spacing: -0.02em;
       }
 
-      .stats {
+      .section-subtitle {
+        font-size: 18px;
+        color: var(--text-secondary);
+        max-width: 600px;
+        line-height: 1.7;
+      }
+
+      .problem-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+        align-items: center;
+        margin-top: 64px;
+      }
+
+      .problem-list {
+        display: flex;
+        flex-direction: column;
         gap: 24px;
       }
 
-      .stat {
-        text-align: center;
+      .problem-item {
+        display: flex;
+        gap: 16px;
         padding: 24px;
         background: white;
-        border-radius: 12px;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        transition: all 0.3s;
       }
 
-      .stat-number {
-        font-size: 48px;
-        font-weight: 700;
-        color: var(--primary);
+      .problem-item:hover {
+        border-color: var(--primary);
+        box-shadow: 0 10px 30px -15px rgba(99, 102, 241, 0.2);
       }
 
-      .stat-label {
-        color: var(--text-light);
-        margin-top: 8px;
-      }
-
-      /* Solution */
-      .solution {
-        padding: 60px 0;
-      }
-
-      .steps {
-        display: grid;
-        gap: 32px;
-        margin-top: 40px;
-      }
-
-      .step {
-        display: flex;
-        gap: 20px;
-        align-items: flex-start;
-      }
-
-      .step-icon {
+      .problem-icon {
         width: 48px;
         height: 48px;
-        background: #dbeafe;
-        border-radius: 12px;
         display: flex;
         align-items: center;
         justify-content: center;
+        background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(249, 115, 22, 0.1) 100%);
+        border-radius: 12px;
         font-size: 24px;
         flex-shrink: 0;
       }
 
-      .step-day {
-        font-size: 14px;
-        color: var(--primary);
-        font-weight: 600;
-        margin-bottom: 4px;
-      }
-
-      .step-title {
+      .problem-content h4 {
         font-size: 18px;
         font-weight: 600;
         margin-bottom: 4px;
       }
 
-      .step-desc {
-        color: var(--text-light);
+      .problem-content p {
+        font-size: 14px;
+        color: var(--text-secondary);
       }
 
-      .killer {
-        background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
-        padding: 4px 12px;
-        border-radius: 6px;
+      .problem-visual {
+        position: relative;
+      }
+
+      .phone-mockup {
+        background: var(--gradient-2);
+        border-radius: 32px;
+        padding: 48px;
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .phone-mockup::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        pointer-events: none;
+      }
+
+      .mockup-header {
+        font-size: 14px;
+        opacity: 0.7;
+        margin-bottom: 24px;
+      }
+
+      .mockup-stat {
+        font-size: 64px;
+        font-weight: 800;
+        line-height: 1;
+        margin-bottom: 8px;
+      }
+
+      .mockup-label {
+        font-size: 18px;
+        opacity: 0.9;
+      }
+
+      .mockup-chart {
+        margin-top: 32px;
+        display: flex;
+        align-items: flex-end;
+        gap: 8px;
+        height: 80px;
+      }
+
+      .chart-bar {
+        flex: 1;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 4px;
+        transition: all 0.3s;
+      }
+
+      .chart-bar:nth-child(1) { height: 40%; }
+      .chart-bar:nth-child(2) { height: 60%; }
+      .chart-bar:nth-child(3) { height: 45%; }
+      .chart-bar:nth-child(4) { height: 80%; }
+      .chart-bar:nth-child(5) { height: 65%; }
+      .chart-bar:nth-child(6) { height: 90%; background: var(--accent); }
+      .chart-bar:nth-child(7) { height: 100%; background: var(--success); }
+
+      /* Solution */
+      .solution {
+        padding: 100px 0;
+        background: var(--bg-secondary);
+      }
+
+      .solution-header {
+        text-align: center;
+        margin-bottom: 64px;
+      }
+
+      .timeline {
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .timeline::before {
+        content: '';
+        position: absolute;
+        left: 32px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(to bottom, var(--primary), var(--accent));
+      }
+
+      .timeline-item {
+        display: flex;
+        gap: 32px;
+        margin-bottom: 32px;
+        position: relative;
+      }
+
+      .timeline-icon {
+        width: 64px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        border: 2px solid var(--primary);
+        border-radius: 20px;
+        font-size: 28px;
+        flex-shrink: 0;
+        z-index: 1;
+        transition: all 0.3s;
+      }
+
+      .timeline-item:hover .timeline-icon {
+        background: var(--primary);
+        transform: scale(1.1);
+      }
+
+      .timeline-content {
+        flex: 1;
+        background: white;
+        padding: 32px;
+        border-radius: 20px;
+        border: 1px solid var(--border);
+        transition: all 0.3s;
+      }
+
+      .timeline-item:hover .timeline-content {
+        border-color: var(--primary);
+        box-shadow: 0 20px 40px -20px rgba(99, 102, 241, 0.2);
+      }
+
+      .timeline-day {
+        display: inline-block;
+        font-size: 12px;
         font-weight: 600;
         color: var(--primary);
+        background: rgba(99, 102, 241, 0.1);
+        padding: 4px 12px;
+        border-radius: 100px;
+        margin-bottom: 12px;
+      }
+
+      .timeline-title {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .killer-badge {
+        font-size: 11px;
+        font-weight: 700;
+        color: white;
+        background: var(--gradient-1);
+        padding: 4px 10px;
+        border-radius: 100px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .timeline-desc {
+        color: var(--text-secondary);
+        line-height: 1.7;
       }
 
       /* How it works */
       .how {
-        background: var(--bg-alt);
-        padding: 60px 0;
+        padding: 100px 0;
       }
 
-      .how-steps {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 24px;
-        margin-top: 40px;
-      }
-
-      .how-step {
+      .how-header {
         text-align: center;
-        padding: 32px 24px;
+        margin-bottom: 64px;
+      }
+
+      .how-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+      }
+
+      .how-card {
+        text-align: center;
+        padding: 40px 24px;
         background: white;
-        border-radius: 12px;
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        transition: all 0.3s;
+        position: relative;
+      }
+
+      .how-card::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: -12px;
+        width: 24px;
+        height: 2px;
+        background: var(--border);
+      }
+
+      .how-card:last-child::before {
+        display: none;
+      }
+
+      .how-card:hover {
+        transform: translateY(-8px);
+        border-color: var(--primary);
+        box-shadow: 0 20px 40px -20px rgba(99, 102, 241, 0.2);
       }
 
       .how-number {
-        width: 40px;
-        height: 40px;
-        background: var(--primary);
-        color: white;
-        border-radius: 50%;
+        width: 48px;
+        height: 48px;
         display: flex;
         align-items: center;
         justify-content: center;
+        background: var(--gradient-1);
+        color: white;
         font-weight: 700;
-        margin: 0 auto 16px;
+        font-size: 20px;
+        border-radius: 16px;
+        margin: 0 auto 24px;
       }
 
       .how-title {
-        font-weight: 600;
+        font-size: 18px;
+        font-weight: 700;
         margin-bottom: 8px;
       }
 
       .how-desc {
         font-size: 14px;
-        color: var(--text-light);
+        color: var(--text-secondary);
+        line-height: 1.6;
+      }
+
+      /* FAQ */
+      .faq {
+        padding: 100px 0;
+        background: var(--bg-secondary);
+      }
+
+      .faq-header {
+        text-align: center;
+        margin-bottom: 64px;
+      }
+
+      .faq-grid {
+        max-width: 800px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .faq-item {
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        overflow: hidden;
+        transition: all 0.3s;
+      }
+
+      .faq-item:hover {
+        border-color: var(--primary);
+      }
+
+      .faq-question {
+        padding: 24px;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .faq-answer {
+        padding: 0 24px 24px;
+        color: var(--text-secondary);
+        line-height: 1.7;
       }
 
       /* Final CTA */
       .final-cta {
-        padding: 80px 0;
+        padding: 120px 0;
+        background: var(--gradient-2);
+        color: white;
         text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .final-cta::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at 30% 50%, rgba(99, 102, 241, 0.3) 0%, transparent 50%),
+                    radial-gradient(circle at 70% 50%, rgba(6, 182, 212, 0.3) 0%, transparent 50%);
+        pointer-events: none;
+      }
+
+      .final-cta .container {
+        position: relative;
+        z-index: 1;
       }
 
       .final-cta h2 {
-        font-size: 32px;
+        font-size: clamp(32px, 4vw, 48px);
+        font-weight: 800;
         margin-bottom: 16px;
       }
 
       .final-cta p {
-        color: var(--text-light);
-        margin-bottom: 32px;
+        font-size: 18px;
+        opacity: 0.8;
+        margin-bottom: 40px;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .final-cta .form-wrapper {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(20px);
+      }
+
+      .final-cta input[type="email"] {
+        color: white;
+      }
+
+      .final-cta input[type="email"]::placeholder {
+        color: rgba(255, 255, 255, 0.5);
       }
 
       /* Footer */
       footer {
-        padding: 24px 0;
+        padding: 32px 0;
+        background: var(--bg-dark);
+        color: var(--text-muted);
         text-align: center;
-        color: var(--text-light);
         font-size: 14px;
-        border-top: 1px solid #e5e7eb;
+      }
+
+      footer a {
+        color: var(--text-muted);
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        color: white;
       }
 
       /* Responsive */
+      @media (max-width: 900px) {
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .problem-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .how-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .how-card::before {
+          display: none;
+        }
+
+        .timeline::before {
+          left: 20px;
+        }
+
+        .timeline-icon {
+          width: 40px;
+          height: 40px;
+          font-size: 18px;
+        }
+      }
+
       @media (max-width: 600px) {
-        .form-row {
+        .form-wrapper {
           flex-direction: column;
         }
 
-        button {
+        .btn-primary {
           width: 100%;
+        }
+
+        .how-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .timeline {
+          padding-left: 0;
+        }
+
+        .timeline::before {
+          display: none;
+        }
+
+        .timeline-icon {
+          display: none;
+        }
+
+        .timeline-item {
+          gap: 0;
         }
       }
     </style>
   </head>
   <body>
+    <!-- Navigation -->
+    <nav>
+      <div class="container">
+        <div class="logo">OdzyskajFakture</div>
+        <a href="#cta" class="nav-cta">Dołącz do listy</a>
+      </div>
+    </nav>
+
     <!-- Hero -->
     <section class="hero">
       <div class="container">
-        <span class="badge">Wkrótce startujemy</span>
-        <h1>Klienci nie płacą faktur?<br><span class="highlight">AI dzwoni za Ciebie.</span></h1>
-        <p class="subtitle">Automatyczne przypomnienia SMS, email i telefon od AI. Odzyskaj zaległe płatności bez dzwonienia i stresu.</p>
-
-        <form class="cta-form" name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-          <input type="hidden" name="form-name" value="waitlist" />
-          <p hidden><label>Nie wypełniaj: <input name="bot-field" /></label></p>
-          <div class="form-row">
-            <input type="email" name="email" placeholder="Twój email" required />
-            <button type="submit">Dołącz do listy</button>
+        <div class="hero-content">
+          <div class="badge fade-up">
+            <span class="badge-dot"></span>
+            Wkrótce startujemy
           </div>
-          <p class="form-note">Dołącz do listy oczekujących. Zero spamu.</p>
-        </form>
+          <h1 class="fade-up delay-1">
+            Klienci nie płacą?<br>
+            <span class="gradient-text">AI dzwoni za Ciebie.</span>
+          </h1>
+          <p class="subtitle fade-up delay-2">
+            Automatyczne przypomnienia SMS, email i telefon od AI.
+            Odzyskaj zaległe płatności bez dzwonienia i stresu.
+          </p>
+
+          <form class="cta-form fade-up delay-3" name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/dziekujemy">
+            <input type="hidden" name="form-name" value="waitlist" />
+            <p hidden><label>Nie wypełniaj: <input name="bot-field" /></label></p>
+            <div class="form-wrapper">
+              <input type="email" name="email" placeholder="Wpisz swój email" required />
+              <button type="submit" class="btn-primary">Dołącz do listy</button>
+            </div>
+            <p class="form-note">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Zero spamu. Powiadomimy tylko o starcie.
+            </p>
+          </form>
+
+          <div class="social-proof fade-up delay-4">
+            <p class="social-proof-label">Zaufali nam przedsiębiorcy z</p>
+            <div class="logos">
+              <span class="logo-placeholder">Hurtownie</span>
+              <span class="logo-placeholder">Agencje</span>
+              <span class="logo-placeholder">Software house</span>
+              <span class="logo-placeholder">Usługi B2B</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number">30%</div>
+            <div class="stat-label">faktur B2B jest płaconych po terminie</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">65%</div>
+            <div class="stat-label">klientów płaci gdy im przypomnisz</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">0</div>
+            <div class="stat-label">osób lubi dzwonić po swoje pieniądze</div>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- Problem -->
     <section class="problem">
       <div class="container">
-        <h2 class="section-title">Problem z płatnościami?</h2>
-        <div class="stats">
-          <div class="stat">
-            <div class="stat-number">30%</div>
-            <div class="stat-label">faktur B2B płaconych po terminie</div>
+        <span class="section-label">Problem</span>
+        <h2 class="section-title">Znasz to uczucie?</h2>
+        <p class="section-subtitle">
+          Wykonujesz pracę, wystawiasz fakturę, a potem... cisza.
+          I zaczyna się nieprzyjemna zabawa w windykatora.
+        </p>
+
+        <div class="problem-grid">
+          <div class="problem-list">
+            <div class="problem-item">
+              <div class="problem-icon">😤</div>
+              <div class="problem-content">
+                <h4>Tracisz czas na przypominanie</h4>
+                <p>Zamiast rozwijać biznes, dzwonisz i piszesz maile "w sprawie faktury"</p>
+              </div>
+            </div>
+            <div class="problem-item">
+              <div class="problem-icon">💸</div>
+              <div class="problem-content">
+                <h4>Cashflow cierpi</h4>
+                <p>Płacisz ZUS, pracownikom, dostawcom - ale Twoje faktury leżą nieopłacone</p>
+              </div>
+            </div>
+            <div class="problem-item">
+              <div class="problem-icon">😰</div>
+              <div class="problem-content">
+                <h4>Niezręczne rozmowy</h4>
+                <p>Dzwonienie po pieniądze to stres. Szczególnie gdy to Twój dobry klient.</p>
+              </div>
+            </div>
           </div>
-          <div class="stat">
-            <div class="stat-number">65%</div>
-            <div class="stat-label">klientów płaci gdy im przypomnisz</div>
-          </div>
-          <div class="stat">
-            <div class="stat-number">0</div>
-            <div class="stat-label">osób lubi dzwonić po pieniądze</div>
+
+          <div class="problem-visual">
+            <div class="phone-mockup">
+              <div class="mockup-header">Niezapłacone faktury</div>
+              <div class="mockup-stat">47 280 zł</div>
+              <div class="mockup-label">czeka na Twoje pieniądze</div>
+              <div class="mockup-chart">
+                <div class="chart-bar"></div>
+                <div class="chart-bar"></div>
+                <div class="chart-bar"></div>
+                <div class="chart-bar"></div>
+                <div class="chart-bar"></div>
+                <div class="chart-bar"></div>
+                <div class="chart-bar"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -340,30 +989,51 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
     <!-- Solution -->
     <section class="solution">
       <div class="container">
-        <h2 class="section-title">Jak działa AI Windykator?</h2>
-        <div class="steps">
-          <div class="step">
-            <div class="step-icon">💬</div>
-            <div>
-              <div class="step-day">Dzień +3</div>
-              <div class="step-title">SMS przypomnienie</div>
-              <div class="step-desc">Delikatne przypomnienie o zbliżającym się terminie płatności.</div>
+        <div class="solution-header">
+          <span class="section-label">Rozwiązanie</span>
+          <h2 class="section-title">AI Windykator działa za Ciebie</h2>
+          <p class="section-subtitle">
+            Automatyczna sekwencja przypomnień. Od delikatnego SMS-a po telefon od AI.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-icon">💬</div>
+            <div class="timeline-content">
+              <span class="timeline-day">Dzień +3 po terminie</span>
+              <h3 class="timeline-title">SMS przypomnienie</h3>
+              <p class="timeline-desc">
+                Krótki, profesjonalny SMS: "Przypominamy o fakturze FV/2024/001 na kwotę 2500 zł.
+                Termin płatności minął 3 dni temu."
+              </p>
             </div>
           </div>
-          <div class="step">
-            <div class="step-icon">📧</div>
-            <div>
-              <div class="step-day">Dzień +7</div>
-              <div class="step-title">Email z fakturą</div>
-              <div class="step-desc">Profesjonalny email z załączoną fakturą i linkiem do płatności.</div>
+
+          <div class="timeline-item">
+            <div class="timeline-icon">📧</div>
+            <div class="timeline-content">
+              <span class="timeline-day">Dzień +7 po terminie</span>
+              <h3 class="timeline-title">Email z fakturą</h3>
+              <p class="timeline-desc">
+                Profesjonalny email z załączoną fakturą PDF i linkiem do szybkiej płatności online.
+                Automatyczny, ale brzmi jak napisany przez człowieka.
+              </p>
             </div>
           </div>
-          <div class="step">
-            <div class="step-icon">📞</div>
-            <div>
-              <div class="step-day">Dzień +14</div>
-              <div class="step-title">Telefon od AI <span class="killer">killer feature</span></div>
-              <div class="step-desc">Naturalny głos AI dzwoni do klienta. Grzecznie ale skutecznie przypomina o płatności.</div>
+
+          <div class="timeline-item">
+            <div class="timeline-icon">📞</div>
+            <div class="timeline-content">
+              <span class="timeline-day">Dzień +14 po terminie</span>
+              <h3 class="timeline-title">
+                Telefon od AI
+                <span class="killer-badge">Killer Feature</span>
+              </h3>
+              <p class="timeline-desc">
+                Naturalny głos AI dzwoni do klienta. Grzecznie ale stanowczo przypomina o płatności.
+                Jeśli klient chce rozmawiać - przekierowanie do Ciebie.
+              </p>
             </div>
           </div>
         </div>
@@ -373,43 +1043,89 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
     <!-- How it works -->
     <section class="how">
       <div class="container">
-        <h2 class="section-title">Proste wdrożenie</h2>
-        <div class="how-steps">
-          <div class="how-step">
+        <div class="how-header">
+          <span class="section-label">Jak to działa</span>
+          <h2 class="section-title">Proste wdrożenie w 4 krokach</h2>
+        </div>
+
+        <div class="how-grid">
+          <div class="how-card">
             <div class="how-number">1</div>
-            <div class="how-title">Podłącz faktury</div>
-            <div class="how-desc">Integracja z Fakturownia, wFirma, inFakt</div>
+            <h3 class="how-title">Podłącz faktury</h3>
+            <p class="how-desc">Integracja z Fakturownia, wFirma, inFakt lub import CSV</p>
           </div>
-          <div class="how-step">
+          <div class="how-card">
             <div class="how-number">2</div>
-            <div class="how-title">AI monitoruje</div>
-            <div class="how-desc">System śledzi terminy płatności</div>
+            <h3 class="how-title">Ustaw reguły</h3>
+            <p class="how-desc">Określ kiedy wysyłać przypomnienia i do kogo</p>
           </div>
-          <div class="how-step">
+          <div class="how-card">
             <div class="how-number">3</div>
-            <div class="how-title">Automatyczne przypomnienia</div>
-            <div class="how-desc">SMS, email, telefon - bez Twojego udziału</div>
+            <h3 class="how-title">AI działa</h3>
+            <p class="how-desc">System automatycznie monitoruje i przypomina</p>
           </div>
-          <div class="how-step">
+          <div class="how-card">
             <div class="how-number">4</div>
-            <div class="how-title">Kasa wraca</div>
-            <div class="how-desc">Ty skupiasz się na biznesie</div>
+            <h3 class="how-title">Kasa wraca</h3>
+            <p class="how-desc">Ty skupiasz się na biznesie, faktury się opłacają</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+      <div class="container">
+        <div class="faq-header">
+          <span class="section-label">FAQ</span>
+          <h2 class="section-title">Często zadawane pytania</h2>
+        </div>
+
+        <div class="faq-grid">
+          <div class="faq-item">
+            <div class="faq-question">Czy AI naprawdę brzmi naturalnie?</div>
+            <div class="faq-answer">
+              Tak! Używamy najnowszych modeli text-to-speech po polsku. Głos brzmi naturalnie,
+              nie jak robot. Klient często nie rozpoznaje, że rozmawia z AI.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">Co jeśli klient chce rozmawiać z człowiekiem?</div>
+            <div class="faq-answer">
+              AI może przekierować rozmowę do Ciebie lub umówić callback.
+              Dostajesz powiadomienie i możesz oddzwonić w dogodnym momencie.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">Jakie systemy fakturowe obsługujecie?</div>
+            <div class="faq-answer">
+              Na start: Fakturownia, wFirma, inFakt. Możesz też importować faktury z CSV.
+              Kolejne integracje dodajemy na życzenie klientów.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">Ile to kosztuje?</div>
+            <div class="faq-answer">
+              Planujemy model od 297 PLN/mies lub success fee 5% od odzyskanych kwot.
+              Dołącz do listy - pierwsi użytkownicy dostaną specjalną ofertę.
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Final CTA -->
-    <section class="final-cta">
+    <section class="final-cta" id="cta">
       <div class="container">
-        <h2>Dołącz do listy oczekujących</h2>
-        <p>Bądź pierwszy gdy wystartujemy. Pierwsi użytkownicy dostaną specjalną ofertę.</p>
-        <form class="cta-form" name="waitlist-bottom" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <h2>Gotowy odzyskać swoje pieniądze?</h2>
+        <p>Dołącz do listy oczekujących. Pierwsi użytkownicy dostaną specjalną ofertę na start.</p>
+
+        <form class="cta-form" name="waitlist-bottom" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/dziekujemy">
           <input type="hidden" name="form-name" value="waitlist-bottom" />
           <p hidden><label>Nie wypełniaj: <input name="bot-field" /></label></p>
-          <div class="form-row">
-            <input type="email" name="email" placeholder="Twój email" required />
-            <button type="submit">Powiadom mnie</button>
+          <div class="form-wrapper">
+            <input type="email" name="email" placeholder="Wpisz swój email" required />
+            <button type="submit" class="btn-primary">Powiadom mnie</button>
           </div>
         </form>
       </div>
@@ -418,7 +1134,7 @@ const description = "Automatyczne przypomnienia SMS, email i telefon od AI. Odzy
     <!-- Footer -->
     <footer>
       <div class="container">
-        <p>&copy; 2026 OdzyskajFakture.pl | Kontakt: adam@codegardenai.com</p>
+        <p>&copy; 2026 OdzyskajFakture.pl | <a href="mailto:adam@codegardenai.com">Kontakt</a></p>
       </div>
     </footer>
   </body>
